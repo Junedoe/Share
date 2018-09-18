@@ -37,7 +37,7 @@ router.post('/', (req, res, next) => {
         })
         .catch(err => next(err));
 });
-// get by Id (for editing)
+// Route to edit the product
 router.get('/:id', (req, res, next) => {
     Product.findById(req.params.id)
         .then(products => {
@@ -45,7 +45,7 @@ router.get('/:id', (req, res, next) => {
         })
         .catch(err => next(err));
 });
-// edit the product
+
 router.put('/:id', (req, res, next) => {
     let { name, subtitle, description } = req.body;
     Product.findByIdAndUpdate(req.params.id, { $set: { name, subtitle, description } }, { new: true })
@@ -57,7 +57,8 @@ router.put('/:id', (req, res, next) => {
         })
         .catch(err => next(err));
 });
-//delete a product
+
+// Route to delete a product
 router.delete('/:id', (req, res, next) => {
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
         res.status(400).json({ message: 'Specified id is not valid' });
