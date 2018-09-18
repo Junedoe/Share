@@ -1,8 +1,9 @@
 const express = require('express');
-const { isLoggedIn } = require('../middlewares');
+const User = require('../models/User');
+const User = require('../models/Product');
 const router = express.Router();
 
-router.get('/userProfile', isLoggedIn, (req, res, next) => {
+router.get('/product-detail', isLoggedIn, (req, res, next) => {
     res.json({
         userProfile: 42,
         user: req.user
