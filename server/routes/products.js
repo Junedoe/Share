@@ -1,7 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Product = require('../models/product');
+const Product = require('../models/Product');
+const User = require('../models/User');
 const router = express.Router();
+const { isLoggedIn } = require('../middlewares');
 
 // Route to get all products
 router.get('/', (req, res, next) => {
@@ -26,9 +28,12 @@ router.get('/:id', (req, res, next) => {
 });
 
 // Route to add a product
-router.post('/', (req, res, next) => {
+router.post('/', isLoggedIn, (req, res, next) => {
+    let _owner = req.user._id;
+    console.log('req._use: ', req.user._id);
+
     let { name, subtitle, description, image } = req.body;
-    Product.create({ name, subtitle, description, image })
+    Product.create({ name, subtitle, description, image, _owner })
         .then(product => {
             res.json({
                 success: true,
@@ -38,7 +43,7 @@ router.post('/', (req, res, next) => {
         .catch(err => next(err));
 });
 // Route to edit the product
-router.get('/:id', (req, res, next) => {
+router.get('/:id', isLoggedIn, (req, res, next) => {
     Product.findById(req.params.id)
         .then(products => {
             res.json(products);
@@ -46,7 +51,7 @@ router.get('/:id', (req, res, next) => {
         .catch(err => next(err));
 });
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id', isLoggedIn, (req, res, next) => {
     let { name, subtitle, description } = req.body;
     Product.findByIdAndUpdate(req.params.id, { $set: { name, subtitle, description } }, { new: true })
         .then(product => {
@@ -59,7 +64,7 @@ router.put('/:id', (req, res, next) => {
 });
 
 // Route to delete a product
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', isLoggedIn, (req, res, next) => {
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
         res.status(400).json({ message: 'Specified id is not valid' });
         return;
@@ -68,7 +73,7 @@ router.delete('/:id', (req, res, next) => {
     Product.remove({ _id: req.params.id })
         .then(message => {
             return res.json({
-                message: 'Coffee has been removed!'
+                message: 'Product has been removed!'
             });
         })
         .catch(error => next(error));

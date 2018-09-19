@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../api';
+import CardProduct from '../CardProduct';
 
 class Products extends Component {
     constructor(props) {
@@ -20,11 +21,16 @@ class Products extends Component {
     }
     render() {
         return (
-            <div className="Products">
+            <div className="Products" id="headings">
                 <h2>List of products</h2>
-                {this.state.products.map((c, i) => (
-                    <li key={i}>{c.name}</li>
-                ))}
+                <div className="product-card">
+                    {this.state.products.map(
+                        (c, i) => (
+                            <CardProduct key={i} product={c} />
+                        ),
+                        console.log(this.state.products)
+                    )}
+                </div>
             </div>
         );
     }
