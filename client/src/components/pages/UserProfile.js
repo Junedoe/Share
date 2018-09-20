@@ -1,30 +1,41 @@
 import React, { Component } from 'react';
 // import { Route, Switch, NavLink, Link } from 'react-router-dom';
 import api from '../../api';
-// import './Secret.css';
+import CardProductDetail from '../CardProduct';
 
-class Secret extends Component {
+class UserProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            secret: null
+            products: []
         };
     }
     componentDidMount(props) {
-        api.getUserProfile().then(data => {
-            this.setState({
-                secret: data.secret
-            });
-        });
+        api.getProducts()
+            .then(products => {
+                this.setState({
+                    products: products
+                });
+            })
+            .catch(err => console.log(err));
     }
+
     render() {
         return (
-            <div className="Secret">
+            <div id="headings">
                 <h2>User Profile</h2>
-                {this.state.secret}
+                <div className="card-product-container">
+                    {this.state.products.map(
+                        (c, i) => (
+                            <CardProductDetail key={i} product={c} />
+                        ),
+                        console.log(this.state.products)
+                    )}
+                    <CardProductDetail />
+                </div>
             </div>
         );
     }
 }
 
-export default Secret;
+export default UserProfile;

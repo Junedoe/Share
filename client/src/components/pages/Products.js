@@ -23,13 +23,20 @@ class Products extends Component {
         return (
             <div className="Products" id="headings">
                 <h2>List of products</h2>
-                <div className="product-card">
-                    {this.state.products.map(
-                        (c, i) => (
-                            <CardProduct key={i} product={c} />
-                        ),
-                        console.log(this.state.products)
-                    )}
+                <div className="card-product-container">
+                    {this.state.products
+                        .filter(el =>
+                            Object.values(el)
+                                .toString()
+                                .toUpperCase()
+                                .includes(this.props.filteredText.toUpperCase())
+                        )
+                        .map(
+                            (c, i) => (
+                                <CardProduct key={i} product={c} />
+                            ),
+                            console.log(this.state.products)
+                        )}
                 </div>
             </div>
         );

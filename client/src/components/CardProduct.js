@@ -16,7 +16,8 @@ const CardProduct = props => {
                     <CardSubtitle>{props.product.subtitle}</CardSubtitle>
                 </CardBody>
                 <CardBody>
-                    <CardLink href="#">View</CardLink>
+                    {/* add the variable id to the  next route */}
+                    <CardLink href={`/product-detail/${props.product._id}`}>Quick View (Popup)</CardLink>
                 </CardBody>
             </Card>
         </div>

@@ -19,7 +19,12 @@ export default {
             .then(res => res.data)
             .catch(errHandler);
     },
-
+    getProduct(id) {
+        return service
+            .get(`/products/${id}`)
+            .then(res => res.data)
+            .catch(errHandler);
+    },
     postProducts(data) {
         return service
             .post('/products', data)

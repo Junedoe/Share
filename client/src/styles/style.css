@@ -1,3 +1,76 @@
+.navbar-header {
+  background-color: #37f3e4;
+  font-size: 20px;
+  font-weight: 400;
+  color: white; }
+
+#logo {
+  font-size: 30px;
+  font-weight: 700;
+  color: white; }
+
+#nav-links {
+  text-decoration: none;
+  color: #484848;
+  padding: 0 5px; }
+
+.searchbar {
+  display: inline; }
+
+.card-product-container {
+  -webkit-flex-flow: row wrap;
+  margin: auto;
+  flex-wrap: wrap;
+  flex-flow: row wrap;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(255, 255, 255, 0.5); }
+
+.one-card {
+  width: 33%;
+  padding: 2%;
+  background-color: rgba(255, 255, 255, 0.5); }
+
+/* Medium screens */
+@media all and (max-width: 800px) {
+  .one-card {
+    /* When on medium sized screens, we center it by evenly distributing empty space around items */
+    justify-content: space-around;
+    width: 100%; } }
+
+#form-container {
+  width: 40vw;
+  margin: auto;
+  border: #37f3e4 2px solid;
+  border-radius: 4px;
+  padding: 4%;
+  align-content: center;
+  /* Small screens */ }
+  #form-container form {
+    margin: 0 auto;
+    padding: 1%; }
+    #form-container form input {
+      margin: 0 auto;
+      border-radius: 3%;
+      box-shadow: none;
+      border-bottom-style: none;
+      border-radius: 3px;
+      padding: 3%;
+      text-align: center;
+      align-content: center; }
+  #form-container h2 {
+    text-align: center; }
+
+@media all and (max-width: 800px) {
+  #form-container {
+    width: 60vw;
+    margin: auto; } }
+
+@media all and (max-width: 500px) {
+  #form-container {
+    width: 80vw;
+    margin: auto; } }
+
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -6311,48 +6384,6 @@ a.text-dark:hover, a.text-dark:focus {
   .table .thead-dark th {
     color: inherit;
     border-color: #dee2e6; } }
-
-.App-header {
-  background-color: #37f3e4; }
-
-#logo {
-  font-size: 30px;
-  font-weight: 700;
-  color: white; }
-
-#nav-links {
-  text-decoration: none;
-  color: #484848;
-  padding: 0 5px; }
-
-.product-card {
-  -webkit-flex-flow: row wrap;
-  margin: auto;
-  flex-wrap: wrap;
-  flex-flow: row wrap;
-  display: flex;
-  flex-direction: row;
-  background-color: rgba(255, 255, 255, 0.5); }
-
-.one-card {
-  width: 33%;
-  padding: 2%;
-  flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.5); }
-
-/* Medium screens */
-@media all and (max-width: 800px) {
-  .one-card {
-    /* When on medium sized screens, we center it by evenly distributing empty space around items */
-    justify-content: space-around;
-    width: 100%; } }
-
-/* Small screens */
-@media all and (max-width: 500px) {
-  .product-card {
-    /* On small screens, we are no longer using row direction but column */
-    flex-direction: column;
-    width: 100%; } }
 
 * {
   font-family: 'Lato', sans-serif; }
