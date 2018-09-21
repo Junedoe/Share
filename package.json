@@ -13,9 +13,11 @@
         "node": "8.9.4"
     },
     "dependencies": {
-        "mdbreact": "^4.7.1",
+        "axios": "^0.18.0",
+        "google-map-react": "^1.0.7",
         "react": "^16.5.2",
         "react-dom": "^16.5.2",
+        "react-places-autocomplete": "^7.2.0",
         "reactstrap": "^6.4.0"
     }
 }

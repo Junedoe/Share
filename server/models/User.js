@@ -5,9 +5,15 @@ const userSchema = new Schema(
     {
         username: String,
         password: String,
-        pictureUrl: String
+        email: String,
+        pictureUrl: String,
+        address: {
+            street: String,
+            number: Number,
+            postalCode: Number,
+            city: String
+        }
     },
-
     {
         timestamps: {
             createdAt: 'created_at',

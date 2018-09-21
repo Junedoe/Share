@@ -6,7 +6,7 @@ import {
     CarouselIndicators,
     CarouselCaption
 } from 'reactstrap';
-import { Card, CardImg, CardText, CardBody, CardLink, CardTitle, CardSubtitle } from 'reactstrap';
+// import { Card, CardImg, CardText, CardBody, CardLink, CardTitle, CardSubtitle } from 'reactstrap';
 
 const items = [
     {
@@ -97,24 +97,3 @@ class CardProductDetail extends Component {
 }
 
 export default CardProductDetail;
-
-{
-    /* <div className="one-card">
-            <Card>
-                <CardImg
-                    top
-                    width="100%"
-                    src="../images/tom-crew-620519-unsplash.jpg"
-                    alt="Card image cap"
-                />
-                <CardBody>
-                    <CardTitle>{props.product.name}</CardTitle>
-                    <CardSubtitle>{props.product.subtitle}</CardSubtitle>
-                </CardBody>
-                <CardBody>
-                    <CardText>{props.product.description}</CardText>
-                    <CardLink href="#">Contact</CardLink>
-                </CardBody>
-            </Card>
-        </div> */
-}

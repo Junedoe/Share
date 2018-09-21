@@ -10,9 +10,12 @@ $grey800: #484848;
 @import 'bootstrap/scss/bootstrap';
 
 * {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Karla', sans-serif;
 }
-
+body {
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+}
 #headings h2 {
     padding-top: 3%;
     font-size: 30px;
