@@ -8,6 +8,7 @@ const { isLoggedIn } = require('../middlewares');
 // Route to get all products
 router.get('/', (req, res, next) => {
     Product.find()
+        .populate('_owner')
         .then(products => {
             res.json(products);
         })

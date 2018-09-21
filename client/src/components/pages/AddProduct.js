@@ -18,7 +18,6 @@ class AddProduct extends Component {
     handleInputChange(stateFieldName, event) {
         let newState = {};
         newState[stateFieldName] = event.target.value;
-
         this.setState(newState);
     }
 

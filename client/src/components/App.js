@@ -4,6 +4,7 @@ import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import AddProduct from './pages/AddProduct';
 import UserProfile from './pages/UserProfile';
+import UserProfile2 from './pages/UserProfile2';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './Navbar';
@@ -32,6 +33,7 @@ class App extends Component {
                     <Route path="/signup" component={Signup} />
                     <Route path="/login" component={Login} />
                     <Route path="/user-profile" component={UserProfile} />
+                    <Route path="/user/:id" component={UserProfile2} />
                     <Route render={() => <h2>404</h2>} />
                 </Switch>
             </div>

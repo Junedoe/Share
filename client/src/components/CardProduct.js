@@ -17,7 +17,10 @@ const CardProduct = props => {
                 </CardBody>
                 <CardBody>
                     {/* add the variable id to the  next route */}
-                    <CardLink href={`/product-detail/${props.product._id}`}>Quick View (Popup)</CardLink>
+                    <CardLink href={`/product-detail/${props.product._id}`}>View details</CardLink>
+                    <CardLink href={`/user/${props.product._owner && props.product._owner._id}`}>
+                        from "(user)"
+                    </CardLink>
                 </CardBody>
             </Card>
         </div>
