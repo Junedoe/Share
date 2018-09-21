@@ -38,7 +38,7 @@ class Navbar extends Component {
                             &times;
                         </a>
                         <a href="/">Home</a>
-                        <a href="/userProfile">My Profile</a>
+                        <a href="/user-profile">My Profile</a>
                         {!api.isLoggedIn() && <Link to="/signup"> Signup</Link>}
                         {!api.isLoggedIn() && <a href="/login">Login</a>}
                         {api.isLoggedIn() && (

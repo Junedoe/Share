@@ -34,7 +34,14 @@ export default {
 
     getUserProfile() {
         return service
-            .get('/userProfile')
+            .get('/user-profile')
+            .then(res => res.data)
+            .catch(errHandler);
+    },
+
+    getProductsOfUser(id) {
+        return service
+            .get(`/user/${id}`)
             .then(res => res.data)
             .catch(errHandler);
     },

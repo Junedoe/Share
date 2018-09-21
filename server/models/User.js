@@ -7,12 +7,11 @@ const userSchema = new Schema(
         password: String,
         email: String,
         pictureUrl: String,
-        address: {
-            street: String,
-            number: Number,
-            postalCode: Number,
-            city: String
-        }
+        street: String,
+        number: Number,
+        postalCode: Number,
+        city: String,
+        district: String
     },
     {
         timestamps: {

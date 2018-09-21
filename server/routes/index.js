@@ -1,12 +1,25 @@
 const express = require('express');
 const { isLoggedIn } = require('../middlewares');
+const Product = require('../models/Product');
+const User = require('../models/User');
+
 const router = express.Router();
 
-router.get('/userProfile', isLoggedIn, (req, res, next) => {
-    res.json({
-        userProfile: 42,
-        user: req.user
-    });
+router.get('/user-profile', isLoggedIn, (req, res, next) => {
+    Product.find({ _owner: req.user._id })
+        .then(userProducts => {
+            res.json(userProducts);
+        })
+        .catch(error => next(error));
+});
+
+router.get('/user/:id', isLoggedIn, (req, res, next) => {
+    Product.find({ _owner: req.params.id })
+        .populate('_owner')
+        .then(userProducts => {
+            res.json(userProducts);
+        })
+        .catch(error => next(error));
 });
 
 module.exports = router;

@@ -14,7 +14,7 @@ class UserProfile extends Component {
         api.getProducts()
             .then(products => {
                 this.setState({
-                    products: products
+                    products: products.filter(product => product._owner)
                 });
             })
             .catch(err => console.log(err));
@@ -25,13 +25,9 @@ class UserProfile extends Component {
             <div id="headings">
                 <h2>User Profile</h2>
                 <div className="card-product-container">
-                    {this.state.products.map(
-                        (c, i) => (
-                            <CardProductDetail key={i} product={c} />
-                        ),
-                        console.log(this.state.products)
-                    )}
-                    <CardProductDetail />
+                    {this.state.products.map((c, i) => (
+                        <CardProductDetail key={i} product={c} />
+                    ))}
                 </div>
             </div>
         );

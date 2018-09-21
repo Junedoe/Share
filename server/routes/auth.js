@@ -8,8 +8,8 @@ const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
 router.post('/signup', (req, res, next) => {
-    const { username, password, email, street, city } = req.body;
-    if (!username || !password || !email || !street || !city) {
+    const { username, password, email, street, city, district } = req.body;
+    if (!username || !password || !email || !street || !city || !district) {
         res.status(401).json({ message: 'All fields must be filled out' });
         return;
     }

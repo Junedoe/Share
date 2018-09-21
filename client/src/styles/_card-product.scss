@@ -10,25 +10,26 @@
 
 .one-card {
     width: 33%;
-    padding: 2%;
+    padding: 3%;
     // flex-direction: column;
     background-color: rgba($color: #ffffff, $alpha: 0.5);
 }
 
 /* Medium screens */
-@media all and (max-width: 800px) {
+@media all and (max-width: 768px) {
     .one-card {
-        /* When on medium sized screens, we center it by evenly distributing empty space around items */
-        justify-content: space-around;
-        width: 100%;
+        width: 50%;
+        padding: 3%;
     }
 }
 
-// /* Small screens */
-// @media all and (max-width: 500px) {
-//     .card-product-container {
-//         /* On small screens, we are no longer using row direction but column */
-//         // flex-direction: column;
-//         width: 100%;
-//     }
-// }
+/* Small screens */
+@media all and (max-width: 426px) {
+    .card-product-container {
+        flex-direction: row;
+    }
+    .one-card {
+        width: 50%;
+        padding: 3%;
+    }
+}

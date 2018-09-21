@@ -61,8 +61,8 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #37f3e4;
-  opacity: 0.8;
+  background-color: white;
+  opacity: 0.9;
   overflow-x: hidden;
   padding-top: 60px;
   transition: 0.5s; }
@@ -114,15 +114,22 @@
 
 .one-card {
   width: 33%;
-  padding: 2%;
+  padding: 3%;
   background-color: rgba(255, 255, 255, 0.5); }
 
 /* Medium screens */
-@media all and (max-width: 800px) {
+@media all and (max-width: 768px) {
   .one-card {
-    /* When on medium sized screens, we center it by evenly distributing empty space around items */
-    justify-content: space-around;
-    width: 100%; } }
+    width: 50%;
+    padding: 3%; } }
+
+/* Small screens */
+@media all and (max-width: 426px) {
+  .card-product-container {
+    flex-direction: row; }
+  .one-card {
+    width: 50%;
+    padding: 3%; } }
 
 #form-container {
   width: 40vw;
@@ -6475,7 +6482,7 @@ a.text-dark:hover, a.text-dark:focus {
   font-family: 'Karla', sans-serif; }
 
 body {
-  background-color: #f4f4f4;
+  background-color: #eeeeee;
   overflow-x: hidden; }
 
 #headings h2 {
