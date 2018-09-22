@@ -14,10 +14,8 @@ const productSchema = new mongoose.Schema(
         description: {
             type: String
         },
-        image: {
-            type: String,
-            default:
-                'https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1192200/580/404/m1/fpnw/wm0/b052_09-.jpg?1461043071&s=7b41fa81152c905a30b356168d1fdc97'
+        pictureUrl: {
+            type: [String]
         },
         _owner: {
             type: mongoose.Schema.Types.ObjectId,

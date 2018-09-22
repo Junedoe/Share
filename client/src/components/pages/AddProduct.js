@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import { Route, Switch, NavLink, Link } from 'react-router-dom';
 import api from '../../api';
-// import './AddProduct.css';
+import AddPicture from './AddPicture';
 
 class AddProduct extends Component {
     constructor(props) {
@@ -10,17 +9,22 @@ class AddProduct extends Component {
             name: '',
             subtitle: '',
             description: '',
-            image: '',
-            message: null
+            message: null,
+            files: ''
         };
     }
+    handlePictureUpload = () => {
+        console.log('handlePictureUpload is being called');
+    };
 
     handleInputChange(stateFieldName, event) {
         let newState = {};
         newState[stateFieldName] = event.target.value;
         this.setState(newState);
+        console.log(this.state);
     }
 
+    handlePicClick(e) {}
     handleClick(e) {
         e.preventDefault();
         console.log(this.state.name, this.state.description);
@@ -28,17 +32,17 @@ class AddProduct extends Component {
             name: this.state.name,
             subtitle: this.state.subtitle,
             description: this.state.description,
-            image: this.state.image
+            pictureUrl: this.state.pictureUrl
         };
-        api.postProducts(data)
+        api.addNewProduct(data)
             .then(result => {
                 console.log('SUCCESS!');
                 this.setState({
                     name: '',
                     subtitle: '',
                     description: '',
-                    image: '',
-                    message: `Your item '${this.state.name}' has been created`
+                    pictureUrl: [''],
+                    message: `Your product '${this.state.name}' has been created`
                 });
                 setTimeout(() => {
                     this.setState({
@@ -54,8 +58,10 @@ class AddProduct extends Component {
         return (
             <div className="AddProduct">
                 <h2>Add product</h2>
-                <form>
-                    Image?
+                {/* <AddPicture onChange={this.handlePictureUpload} /> */}
+                <form encType="multipart/form-data">
+                    <input multiple type="file" name="Upload" onChange={e => this.handleChange(e)} />{' '}
+                    <br />
                     <br />
                     Name:{' '}
                     <input
@@ -90,7 +96,7 @@ class AddProduct extends Component {
                 <div
                     style={{
                         margin: 10,
-                        backgroundColor: 'red',
+                        backgroundColor: '#37f3e4',
                         display: this.state.message ? 'block' : 'none'
                     }}
                 >
@@ -98,6 +104,12 @@ class AddProduct extends Component {
                 </div>
             </div>
         );
+    }
+    handleChange(e) {
+        this.setState({
+            files: e.target.files
+        });
+        console.log(this.state);
     }
 }
 

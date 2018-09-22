@@ -23,7 +23,8 @@ class UserProfile2 extends Component {
     render() {
         return (
             <div id="headings">
-                <h2>User Profile 2</h2>
+                <h2>Welcome</h2>
+                {console.log('this.state.products[0]', this.state.products[0])}
                 <div className="card-product-container">
                     {this.state.products.map((c, i) => (
                         <CardProductDetail key={i} product={c} />

@@ -5,12 +5,7 @@ const CardProduct = props => {
     return (
         <div className="one-card">
             <Card>
-                <CardImg
-                    top
-                    width="100%"
-                    src="../images/tom-crew-620519-unsplash.jpg"
-                    alt="Card image cap"
-                />
+                <CardImg top width="100%" src={props.product.pictureUrl[0]} alt="Card image cap" />
                 <CardBody>
                     <CardTitle>{props.product.name}</CardTitle>
                     <CardSubtitle>{props.product.subtitle}</CardSubtitle>

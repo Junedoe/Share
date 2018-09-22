@@ -25,9 +25,9 @@ export default {
             .then(res => res.data)
             .catch(errHandler);
     },
-    postProducts(data) {
+    addNewProduct(data) {
         return service
-            .post('/products', data)
+            .post('/products/add-new-product', data)
             .then(res => res.data)
             .catch(errHandler);
     },
@@ -91,7 +91,7 @@ export default {
         const formData = new FormData();
         formData.append('picture', file);
         return service
-            .post('/users/first-user/pictures', formData, {
+            .post('/products/add-picture', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

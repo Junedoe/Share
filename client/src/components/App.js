@@ -28,7 +28,7 @@ class App extends Component {
                         exact
                         component={() => <Products filteredText={this.state.filteredText} />}
                     />
-                    <Route path="/add-product" component={AddProduct} />
+                    <Route path="/add-new-product" component={AddProduct} />
                     <Route path="/product-detail/:id" component={ProductDetail} />
                     <Route path="/signup" component={Signup} />
                     <Route path="/login" component={Login} />
