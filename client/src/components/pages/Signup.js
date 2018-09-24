@@ -53,6 +53,13 @@ class Signup extends Component {
                         onChange={e => this.handleInputChange('username', e)}
                     />{' '}
                     <br />
+                    Password:{' '}
+                    <input
+                        type="text"
+                        value={this.state.password}
+                        onChange={e => this.handleInputChange('password', e)}
+                    />{' '}
+                    <br />
                     Name:{' '}
                     <input
                         type="text"
