@@ -23,7 +23,7 @@ class UserProfile extends Component {
     render() {
         return (
             <div id="headings">
-                <h2>User Profile</h2>
+                <h2>My Profile</h2>
                 <div className="card-product-container">
                     {this.state.products.map((c, i) => (
                         <CardProductDetail key={i} product={c} />
