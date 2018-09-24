@@ -71,8 +71,6 @@ class AddProduct extends Component {
         return (
             <div className="AddProduct">
                 <h2>Add product</h2>
-
-                {/* form for a product: */}
                 <form onSubmit={e => this.handleSubmit(e)}>
                     <input type="file" name="image" onChange={e => this.handleChange(e)} /> <br />
                     <br />
