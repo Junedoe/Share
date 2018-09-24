@@ -22,6 +22,7 @@ class ProductDetail extends Component {
     render() {
         return (
             <div className="Products" id="headings">
+                <h2>Product Detail Page</h2>
                 <CardProductDetail product={this.state.product} />
                 <button>Contact</button>
             </div>
