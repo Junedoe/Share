@@ -55,7 +55,7 @@ class Signup extends Component {
                     <br />
                     Password:{' '}
                     <input
-                        type="text"
+                        type="password"
                         value={this.state.password}
                         onChange={e => this.handleInputChange('password', e)}
                     />{' '}
@@ -76,21 +76,21 @@ class Signup extends Component {
                     <br />
                     Street:{' '}
                     <input
-                        type="street"
+                        type="text"
                         value={this.state.street}
                         onChange={e => this.handleInputChange('street', e)}
                     />{' '}
                     <br />
                     District:{' '}
                     <input
-                        type="district"
+                        type="text"
                         value={this.state.district}
                         onChange={e => this.handleInputChange('district', e)}
                     />{' '}
                     <br />
                     City:{' '}
                     <input
-                        type="city"
+                        type="text"
                         value={this.state.city}
                         onChange={e => this.handleInputChange('city', e)}
                     />{' '}
