@@ -90,9 +90,8 @@ export default {
     addPicture(file) {
         const formData = new FormData();
         formData.append('picture', file);
-        console.log('DEBUG formData', formData.get('picture'));
         return service
-            .post('/add-new-product', formData, {
+            .post('/products/add-new-product', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

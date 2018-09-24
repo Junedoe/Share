@@ -22,32 +22,36 @@ class AddProduct extends Component {
         this.setState(newState);
     }
 
-    handleClick(e) {
+    handleSubmit(e) {
         e.preventDefault();
-        console.log(this.state.name, this.state.description);
-        let data = {
-            name: this.state.name,
-            subtitle: this.state.subtitle,
-            description: this.state.description,
-            image: this.state.image,
-            file: this.state.file
-        };
-        api.postProducts(data)
-            .then(result => {
-                console.log('SUCCESS!');
-                this.setState({
-                    name: '',
-                    subtitle: '',
-                    description: '',
-                    image: '',
-                    file: '',
-                    message: `Your item '${this.state.name}' has been created`
-                });
-                setTimeout(() => {
+        api.addPicture(this.state.file)
+            .then(url => {
+                console.log('at url', url);
+                this.setState({ image: url.pictureUrl });
+                let data = {
+                    name: this.state.name,
+                    subtitle: this.state.subtitle,
+                    description: this.state.description,
+                    image: this.state.image,
+                    file: this.state.file
+                };
+                api.postProducts(data).then(result => {
+                    console.log(result);
+                    console.log('SUCCESS!');
                     this.setState({
-                        message: null
+                        name: '',
+                        subtitle: '',
+                        description: '',
+                        image: '',
+                        file: '',
+                        message: `Your item '${this.state.name}' has been created`
                     });
-                }, 2000);
+                    setTimeout(() => {
+                        this.setState({
+                            message: null
+                        });
+                    }, 2000);
+                });
             })
             .catch(err => {
                 console.log('ERROR');
@@ -62,22 +66,15 @@ class AddProduct extends Component {
             file: e.target.files[0]
         });
     }
-    handleSubmit(e) {
-        e.preventDefault();
-        api.addPicture(this.state.file);
-    }
 
     render() {
         return (
             <div className="AddProduct">
                 <h2>Add product</h2>
-                {/* form for a picture: */}
-                <form onSubmit={e => this.handleSubmit(e)}>
-                    <input type="file" onChange={e => this.handleChange(e)} /> <br />
-                    <button type="submit">Save new picture</button>
-                </form>
+
                 {/* form for a product: */}
-                <form>
+                <form onSubmit={e => this.handleSubmit(e)}>
+                    <input type="file" name="image" onChange={e => this.handleChange(e)} /> <br />
                     <br />
                     Name:{' '}
                     <input
@@ -107,7 +104,7 @@ class AddProduct extends Component {
                         }}
                     />{' '}
                     <br />
-                    <button onClick={e => this.handleClick(e)}>Add Item</button>
+                    <button>Add Item</button>
                 </form>
                 <div
                     style={{

@@ -5,6 +5,19 @@ const User = require('../models/User');
 const router = express.Router();
 const { isLoggedIn } = require('../middlewares');
 
+const cloudinary = require('cloudinary');
+const cloudinaryStorage = require('multer-storage-cloudinary');
+const multer = require('multer');
+const config = require('../configs/cloudinary'); //???
+
+const storage = cloudinaryStorage({
+    cloudinary,
+    folder: 'my-images',
+    allowedFormats: ['jpg', 'png', 'gif']
+});
+
+const parser = multer({ storage });
+
 // Route to get all products
 router.get('/', (req, res, next) => {
     Product.find()
@@ -31,10 +44,8 @@ router.get('/:id', (req, res, next) => {
 // Route to add a product
 router.post('/', isLoggedIn, (req, res, next) => {
     let _owner = req.user._id;
-    console.log('req._use: ', req.user._id);
-
     let { name, subtitle, description, image } = req.body;
-    Product.create({ name, subtitle, description, image, _owner })
+    Product.create({ name, subtitle, description, _owner, image })
         .then(product => {
             res.json({
                 success: true,
@@ -114,21 +125,8 @@ router.post('/multiple_uploads', async (req, res) => {
     res.json({ response: upload });
 });
 
-// const config = require('../config'); //???
-const cloudinary = require('cloudinary');
-const cloudinaryStorage = require('multer-storage-cloudinary');
-const multer = require('multer');
-
-const storage = cloudinaryStorage({
-    cloudinary,
-    folder: 'my-images',
-    allowedFormats: ['jpg', 'png', 'gif']
-});
-
-const parser = multer({ storage });
-
 router.post('/add-new-product', parser.single('picture'), (req, res, next) => {
-    User.findOneAndUpdate({}, { pictureUrl: req.file.url }).then(() => {
+    Product.findOneAndUpdate({}, { pictureUrl: req.file.url }).then(() => {
         res.json({
             success: true,
             pictureUrl: req.file.url
