@@ -4,7 +4,7 @@ const Product = require('../models/Product');
 const User = require('../models/User');
 const router = express.Router();
 const { isLoggedIn } = require('../middlewares');
-
+console.log('test');
 // Route to get all products
 router.get('/', (req, res, next) => {
     Product.find()
