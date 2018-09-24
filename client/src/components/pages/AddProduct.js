@@ -11,7 +11,8 @@ class AddProduct extends Component {
             subtitle: '',
             description: '',
             image: '',
-            message: null
+            message: null,
+            file: null
         };
     }
 
@@ -28,7 +29,8 @@ class AddProduct extends Component {
             name: this.state.name,
             subtitle: this.state.subtitle,
             description: this.state.description,
-            image: this.state.image
+            image: this.state.image,
+            file: this.state.file
         };
         api.postProducts(data)
             .then(result => {
@@ -38,6 +40,7 @@ class AddProduct extends Component {
                     subtitle: '',
                     description: '',
                     image: '',
+                    file: '',
                     message: `Your item '${this.state.name}' has been created`
                 });
                 setTimeout(() => {
@@ -50,12 +53,31 @@ class AddProduct extends Component {
                 console.log('ERROR');
             });
     }
+    // new:
+
+    handleChange(e) {
+        console.log('handleChange');
+        console.log('DEBUG e.target.files[0]', e.target.files[0]);
+        this.setState({
+            file: e.target.files[0]
+        });
+    }
+    handleSubmit(e) {
+        e.preventDefault();
+        api.addPicture(this.state.file);
+    }
+
     render() {
         return (
             <div className="AddProduct">
                 <h2>Add product</h2>
+                {/* form for a picture: */}
+                <form onSubmit={e => this.handleSubmit(e)}>
+                    <input type="file" onChange={e => this.handleChange(e)} /> <br />
+                    <button type="submit">Save new picture</button>
+                </form>
+                {/* form for a product: */}
                 <form>
-                    Image?
                     <br />
                     Name:{' '}
                     <input
@@ -90,7 +112,7 @@ class AddProduct extends Component {
                 <div
                     style={{
                         margin: 10,
-                        backgroundColor: 'red',
+                        backgroundColor: 'aqua',
                         display: this.state.message ? 'block' : 'none'
                     }}
                 >

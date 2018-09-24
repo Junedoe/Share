@@ -4,7 +4,7 @@ const Product = require('../models/Product');
 const User = require('../models/User');
 const router = express.Router();
 const { isLoggedIn } = require('../middlewares');
-console.log('test');
+
 // Route to get all products
 router.get('/', (req, res, next) => {
     Product.find()
@@ -78,6 +78,62 @@ router.delete('/:id', isLoggedIn, (req, res, next) => {
             });
         })
         .catch(error => next(error));
+});
+
+/*first route {multiple image upload}*/
+router.post('/multiple_uploads', async (req, res) => {
+    /* we would receive a request of file paths as array */
+    let filePaths = req.body.filePaths;
+
+    let multipleUpload = new Promise(async (resolve, reject) => {
+        let upload_len = filePaths.length,
+            upload_res = new Array();
+
+        for (let i = 0; i <= upload_len + 1; i++) {
+            let filePath = filePaths[i];
+            await cloudinary.v2.uploader.upload(filePath, (error, result) => {
+                if (upload_res.length === upload_len) {
+                    /* resolve promise after upload is complete */
+                    resolve(upload_res);
+                } else if (result) {
+                    /*push public_ids in an array */
+
+                    upload_res.push(result.public_id);
+                } else if (error) {
+                    console.log(error);
+                    reject(error);
+                }
+            });
+        }
+    })
+        .then(result => result)
+        .catch(error => error);
+
+    /*waits until promise is resolved before sending back response to user*/
+    let upload = await multipleUpload;
+    res.json({ response: upload });
+});
+
+// const config = require('../config'); //???
+const cloudinary = require('cloudinary');
+const cloudinaryStorage = require('multer-storage-cloudinary');
+const multer = require('multer');
+
+const storage = cloudinaryStorage({
+    cloudinary,
+    folder: 'my-images',
+    allowedFormats: ['jpg', 'png', 'gif']
+});
+
+const parser = multer({ storage });
+
+router.post('/add-new-product', parser.single('picture'), (req, res, next) => {
+    User.findOneAndUpdate({}, { pictureUrl: req.file.url }).then(() => {
+        res.json({
+            success: true,
+            pictureUrl: req.file.url
+        });
+    });
 });
 
 module.exports = router;
