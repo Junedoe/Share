@@ -7,7 +7,8 @@ class UserProfile2 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: []
+            products: [],
+            username: ''
         };
     }
     componentDidMount() {
@@ -15,6 +16,13 @@ class UserProfile2 extends Component {
             .then(products => {
                 this.setState({
                     products: products
+                });
+            })
+            .catch(err => console.log(err));
+        api.getCurrentUser()
+            .then(data => {
+                this.setState({
+                    username: data.username
                 });
             })
             .catch(err => console.log(err));
@@ -32,7 +40,7 @@ class UserProfile2 extends Component {
                     <div className="box box2">
                         <div className="flx-start">
                             <div className="up-card">
-                                <h1>Jane Doe</h1>
+                                <h1>Welcome {this.state.username}</h1>
                                 <p className="up-title">Sharing is caring</p>
                                 <p />
                                 <p>

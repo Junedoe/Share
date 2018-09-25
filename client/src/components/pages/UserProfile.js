@@ -9,7 +9,8 @@ class UserProfile extends Component {
         this.state = {
             products: [],
             image: '',
-            file: null
+            file: null,
+            username: ''
         };
     }
     componentDidMount(props) {
@@ -17,6 +18,13 @@ class UserProfile extends Component {
             .then(products => {
                 this.setState({
                     products: products.filter(product => product._owner)
+                });
+            })
+            .catch(err => console.log(err));
+        api.getCurrentUser()
+            .then(data => {
+                this.setState({
+                    username: data.username
                 });
             })
             .catch(err => console.log(err));
@@ -53,17 +61,17 @@ class UserProfile extends Component {
             <div id="headings">
                 <div className="grid">
                     <div className="box box1">
-                        <form onSubmit={e => this.handleSubmit(e)}>
-                            <input type="file" name="image" onChange={e => this.handleChange(e)} />
-                        </form>
                         <div>
                             <img id="profile-pic" src="/images/profile-pic.jpg" alt="Jane" />
+                            <form onSubmit={e => this.handleSubmit(e)}>
+                                <input type="file" name="image" onChange={e => this.handleChange(e)} />
+                            </form>
                         </div>
                     </div>
                     <div className="box box2">
                         <div className="flx-start">
                             <div className="up-card">
-                                <h1>Jane Doe</h1>
+                                <h1>Welcome {this.state.username}</h1>
                                 <p className="up-title">Sharing is caring</p>
                                 <p />
                                 <p>
