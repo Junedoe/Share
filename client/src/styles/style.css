@@ -306,6 +306,16 @@ b {
         .pop input:checked + .modal label:hover {
           background: #333333; }
 
+#add-product {
+  border: 2px #37f3e4 solid;
+  border-radius: 4px;
+  align-content: center; }
+
+#add-product form {
+  align-content: center;
+  margin-left: 30%;
+  margin-right: 30%; }
+
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
