@@ -4,17 +4,19 @@ import MessageList from './messageList';
 import SendMessageForm from './sendMessageForm';
 import RoomList from './roomList';
 import NewRoomForm from './newRoomForm';
+import api from '../../api';
 
 import { tokenUrl, instanceLocator } from './config';
 
 class ChatApp extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             currentRoomId: null,
             joinableRooms: [],
             joinedRooms: [],
-            messages: []
+            messages: [],
+            currentId: ''
         };
         this.subscribeToRoom = this.subscribeToRoom.bind(this);
         this.sendMessage = this.sendMessage.bind(this);
@@ -22,26 +24,40 @@ class ChatApp extends React.Component {
     }
 
     componentDidMount() {
-        const chatManager = new Chatkit.ChatManager({
-            instanceLocator: instanceLocator,
-            userId: 'ojuna',
-            tokenProvider: new Chatkit.TokenProvider({
-                url: tokenUrl
-            })
-        });
-
-        chatManager
-            .connect()
-            .then(currentUser => {
-                this.currentUser = currentUser;
-                return this.currentUser.getJoinableRooms().then(joinableRooms => {
-                    this.setState({
-                        joinableRooms,
-                        joinedRooms: this.currentUser.rooms
-                    });
+        api.getCurrentUser()
+            .then(data => {
+                this.setState({
+                    currentId: data._id,
+                    currentUsername: data.username,
+                    currentScreen: 'chat'
                 });
             })
-            .catch(err => console.log('error connecting: ', err));
+            .then(data => {
+                const chatManager = new Chatkit.ChatManager({
+                    instanceLocator: instanceLocator,
+                    userId: this.state.currentId,
+                    tokenProvider: new Chatkit.TokenProvider({
+                        url: tokenUrl
+                    })
+                });
+
+                chatManager
+                    .connect()
+                    .then(currentUser => {
+                        console.log('CURRENT USER', currentUser);
+                        return this.currentUser.getJoinableRooms().then(joinableRooms => {
+                            this.setState({
+                                joinableRooms,
+                                joinedRooms: this.currentUser.rooms
+                            });
+                        });
+                        console.log('Bleep bloop 🤖 You are connected to Chatkit');
+                    })
+                    .catch(err => console.log('error connecting: ', err));
+            })
+            .catch(error => {
+                console.error('error', error);
+            });
     }
 
     sendMessage(text) {
@@ -64,6 +80,7 @@ class ChatApp extends React.Component {
         this.setState({
             messages: []
         });
+        console.log('SUBSCRIBE', this.currentUser);
         this.currentUser
             .subscribeToRoom({
                 roomId: roomId,

@@ -7,7 +7,9 @@ class UserProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: []
+            products: [],
+            image: '',
+            file: null
         };
     }
     componentDidMount(props) {
@@ -19,12 +21,41 @@ class UserProfile extends Component {
             })
             .catch(err => console.log(err));
     }
+    handleInputChange(stateFieldName, event) {
+        let newState = {};
+        newState[stateFieldName] = event.target.value;
+        this.setState(newState);
+    }
+    handleSubmit(e) {
+        e.preventDefault();
+        api.addPicture(this.state.file)
+            .then(url => {
+                console.log('at url', url);
+                this.setState({ image: url.pictureUrl });
+                let data = {
+                    image: this.state.image,
+                    file: this.state.file
+                };
+            })
+            .catch(err => {
+                console.log('ERROR');
+            });
+    }
+
+    handleChange(e) {
+        this.setState({
+            file: e.target.files[0]
+        });
+    }
 
     render() {
         return (
             <div id="headings">
                 <div className="grid">
                     <div className="box box1">
+                        <form onSubmit={e => this.handleSubmit(e)}>
+                            <input type="file" name="image" onChange={e => this.handleChange(e)} />
+                        </form>
                         <div>
                             <img id="profile-pic" src="/images/profile-pic.jpg" alt="Jane" />
                         </div>

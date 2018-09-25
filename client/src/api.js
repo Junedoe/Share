@@ -67,21 +67,27 @@ export default {
     },
 
     logout() {
-        return service.get('/logout').then(res => {
-            localStorage.removeItem('user');
-        });
+        localStorage.removeItem('user');
+        return service.get('/logout');
     },
 
-    // loadUser() {
-    //   const userData = localStorage.getItem('user');
-    //   if (!userData) return false;
-    //   const user = JSON.parse(userData);
-    //   if (user.token) {
-    //     axios.defaults.headers.common['Authorization'] = 'Bearer ' + user.token;
-    //     return user;
-    //   }
-    //   return false;
+    // getCurrentUser() {
+    //     const userData = localStorage.getItem('user');
+    //     if (!userData) return false;
+    //     const user = JSON.parse(userData);
+    //     if (user.token) {
+    //         axios.defaults.headers.common['Authorization'] = 'Bearer ' + user.token;
+    //         return user;
+    //     }
+    //     return false;
     // },
+
+    getCurrentUser() {
+        return service
+            .get('/user')
+            .then(res => res.data)
+            .catch(errHandler);
+    },
 
     isLoggedIn() {
         return localStorage.getItem('user') != null;

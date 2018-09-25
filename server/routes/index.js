@@ -22,4 +22,12 @@ router.get('/user/:id', isLoggedIn, (req, res, next) => {
         .catch(error => next(error));
 });
 
+router.get('/user', isLoggedIn, (req, res, next) => {
+    User.findById(req.user._id)
+        .then(user => {
+            res.json(user);
+        })
+        .catch(error => next(error));
+});
+
 module.exports = router;

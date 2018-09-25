@@ -21,9 +21,7 @@ class Navbar extends Component {
             isOpen: !this.state.isOpen
         });
     };
-    handleChange = e => {
-        this.setState({ filteredText: e.target.value });
-    };
+
     render() {
         return (
             <div>
@@ -90,8 +88,8 @@ class Navbar extends Component {
                             </li>
                             <li className="navbar-navb-search">
                                 <Searchbar
-                                    filteredText={this.state.filteredText}
-                                    handleChange={this.handleChange}
+                                    filteredText={this.props.filteredText}
+                                    handleChange={this.props.handleChange}
                                 />
                             </li>
                         </ul>
