@@ -4,9 +4,11 @@ $grey100: #fffcfc;
 $grey200: #f6f5f5;
 $grey400: #bdbbbb;
 $grey800: #484848;
+$pink: #f39fff;
 @import 'navbar.scss';
 @import 'card-product.scss';
 @import 'login-signup.scss';
+@import 'user-profile.scss';
 @import 'bootstrap/scss/bootstrap';
 
 * {

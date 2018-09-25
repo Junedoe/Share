@@ -62,6 +62,9 @@ class Navbar extends Component {
                     <div className="nav-links-row">
                         <ul className="navbar navbar-navb">
                             <li className="navbar-navb-li">
+                                {api.isLoggedIn() && <Link to="/chat">Chat</Link>}
+                            </li>
+                            <li className="navbar-navb-li">
                                 {!api.isLoggedIn() && <Link to="/">Home</Link>}
                             </li>
                             <li className="navbar-navb-li">
