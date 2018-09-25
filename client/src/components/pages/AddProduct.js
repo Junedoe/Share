@@ -106,8 +106,9 @@ class AddProduct extends Component {
                 </form>
                 <div
                     style={{
+                        width: '20%',
                         margin: 10,
-                        backgroundColor: 'aqua',
+                        backgroundColor: '#37f3e4',
                         display: this.state.message ? 'block' : 'none'
                     }}
                 >

@@ -23,12 +23,14 @@ class UserProfile extends Component {
     render() {
         return (
             <div id="headings">
-                <div className="header-pic">
-                    <div class="flex-grid">
-                        <div class="col">
-                            <img id="profile-pic" src="/images/profile-pic.png" alt="John" />
+                <div className="grid">
+                    <div className="box box1">
+                        <div>
+                            <img id="profile-pic" src="/images/profile-pic.jpg" alt="Jane" />
                         </div>
-                        <div class="col">
+                    </div>
+                    <div className="box box2">
+                        <div className="flx-start">
                             <div className="up-card">
                                 <h1>Jane Doe</h1>
                                 <p className="up-title">Sharing is caring</p>

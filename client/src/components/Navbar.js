@@ -38,7 +38,9 @@ class Navbar extends Component {
                             &times;
                         </a>
                         <a href="/">Home</a>
-                        <a href="/user-profile">My Profile</a>
+                        {!api.isLoggedIn() && <a href="/user-profile">My Profile</a>}
+                        {api.isLoggedIn() && <a href="/add-new-product">Add Product</a>}
+                        {api.isLoggedIn() && <a href="/chat">Chat</a>}
                         {!api.isLoggedIn() && <Link to="/signup"> Signup</Link>}
                         {!api.isLoggedIn() && <a href="/login">Login</a>}
                         {api.isLoggedIn() && (
@@ -62,13 +64,16 @@ class Navbar extends Component {
                     <div className="nav-links-row">
                         <ul className="navbar navbar-navb">
                             <li className="navbar-navb-li">
-                                {api.isLoggedIn() && <Link to="/chat">Chat</Link>}
-                            </li>
-                            <li className="navbar-navb-li">
                                 {!api.isLoggedIn() && <Link to="/">Home</Link>}
                             </li>
                             <li className="navbar-navb-li">
                                 <Link to="/user-profile">My Profile</Link>
+                            </li>
+                            <li className="navbar-navb-li">
+                                {api.isLoggedIn() && <Link to="/add-new-product">Add Product</Link>}
+                            </li>
+                            <li className="navbar-navb-li">
+                                {api.isLoggedIn() && <Link to="/chat">Chat</Link>}
                             </li>
                             <li className="navbar-navb-li">
                                 {!api.isLoggedIn() && <Link to="/signup">Signup</Link>}
