@@ -23,7 +23,24 @@ class UserProfile extends Component {
     render() {
         return (
             <div id="headings">
-                <h2>User Profile</h2>
+                <div className="header-pic">
+                    <div class="flex-grid">
+                        <div class="col">
+                            <img id="profile-pic" src="/images/profile-pic.png" alt="John" />
+                        </div>
+                        <div class="col">
+                            <div className="up-card">
+                                <h1>Jane Doe</h1>
+                                <p className="up-title">Sharing is caring</p>
+                                <p />
+                                <p>
+                                    <button className="up-btn">Contact</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="card-product-container">
                     {this.state.products.map((c, i) => (
                         <CardProductDetail key={i} product={c} />

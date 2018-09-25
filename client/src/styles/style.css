@@ -164,6 +164,55 @@
     width: 80vw;
     margin: auto; } }
 
+.header-pic {
+  background-image: url("/images/header.jpg");
+  width: 100vw;
+  height: 30%;
+  overflow: hidden; }
+
+.flex-grid {
+  display: flex;
+  justify-content: space-evenly; }
+
+.col {
+  margin-left: 10%;
+  width: 48%; }
+
+@media (max-width: 400px) {
+  .flex-grid {
+    display: block; } }
+
+#profile-pic {
+  border: 10px solid #f39fff;
+  width: 50%;
+  height: auto; }
+
+.up-card {
+  border: 10px solid #f39fff;
+  max-width: 300px;
+  margin: auto;
+  text-align: center; }
+
+.up-title {
+  color: grey;
+  font-size: 18px; }
+
+.up-btn {
+  border: aquamarine solid 2px;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #f7f7f7;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px; }
+
+.up-btn:hover,
+a:hover {
+  opacity: 0.7; }
+
 /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -174,7 +223,7 @@
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
-  --pink: #e83e8c;
+  --pink: #f39fff;
   --red: #dc3545;
   --orange: #fd7e14;
   --yellow: #ffc107;
@@ -582,7 +631,7 @@ mark,
 
 code {
   font-size: 87.5%;
-  color: #e83e8c;
+  color: #f39fff;
   word-break: break-word; }
   a > code {
     color: inherit; }

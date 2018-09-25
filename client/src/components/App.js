@@ -5,6 +5,7 @@ import ProductDetail from './pages/ProductDetail';
 import AddProduct from './pages/AddProduct';
 import UserProfile from './pages/UserProfile';
 import UserProfile2 from './pages/UserProfile2';
+import Chat from './pages/Chat';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './Navbar';
@@ -34,6 +35,7 @@ class App extends Component {
                     <Route path="/login" component={Login} />
                     <Route path="/user-profile" component={UserProfile} />
                     <Route path="/user/:id" component={UserProfile2} />
+                    <Route path="/chat" component={Chat} />
                     <Route render={() => <h2>404</h2>} />
                 </Switch>
             </div>
