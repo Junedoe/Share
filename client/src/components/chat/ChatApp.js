@@ -110,7 +110,7 @@ class ChatApp extends React.Component {
 
     render() {
         return (
-            <div className="app">
+            <div className="chat-app">
                 <RoomList
                     rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]}
                     subscribeToRoom={this.subscribeToRoom}
