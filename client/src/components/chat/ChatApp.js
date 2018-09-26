@@ -40,20 +40,20 @@ class ChatApp extends React.Component {
                         url: tokenUrl
                     })
                 });
-
-                chatManager
-                    .connect()
-                    .then(currentUser => {
-                        console.log('CURRENT USER', currentUser);
-                        return this.currentUser.getJoinableRooms().then(joinableRooms => {
-                            this.setState({
-                                joinableRooms,
-                                joinedRooms: this.currentUser.rooms
-                            });
+                return chatManager;
+            })
+            .then(chatManager => {
+                console.log('CHATMANAGER', chatManager);
+                chatManager.connect().then(currentUser => {
+                    console.log('CURRENT USER', currentUser.name);
+                    return currentUser.getJoinableRooms().then(joinableRooms => {
+                        this.setState({
+                            currentUser: currentUser,
+                            joinableRooms,
+                            joinedRooms: currentUser.rooms
                         });
-                        console.log('Bleep bloop 🤖 You are connected to Chatkit');
-                    })
-                    .catch(err => console.log('error connecting: ', err));
+                    });
+                });
             })
             .catch(error => {
                 console.error('error', error);
@@ -61,14 +61,15 @@ class ChatApp extends React.Component {
     }
 
     sendMessage(text) {
-        this.currentUser.sendMessage({
+        this.state.currentUser.sendMessage({
             text,
-            roomId: this.state.currentRoomId
+            roomId: this.state.currentRoomId,
+            senderId: this.state.currentUser.name
         });
     }
 
     createRoom(name) {
-        this.currentUser
+        this.state.currentUser
             .createRoom({
                 name
             })
@@ -80,8 +81,8 @@ class ChatApp extends React.Component {
         this.setState({
             messages: []
         });
-        console.log('SUBSCRIBE', this.currentUser);
-        this.currentUser
+        console.log('SUBSCRIBE', this.state.currentUser);
+        this.state.currentUser
             .subscribeToRoom({
                 roomId: roomId,
                 hooks: {
@@ -94,10 +95,10 @@ class ChatApp extends React.Component {
             })
             .then(currentRoom => {
                 this.setState({ currentRoomId: currentRoom.id });
-                return this.currentUser.getJoinableRooms().then(joinableRooms => {
+                return this.state.currentUser.getJoinableRooms().then(joinableRooms => {
                     this.setState({
                         joinableRooms,
-                        joinedRooms: this.currentUser.rooms
+                        joinedRooms: this.state.currentUser.rooms
                     });
                 });
             })
@@ -112,7 +113,11 @@ class ChatApp extends React.Component {
                     subscribeToRoom={this.subscribeToRoom}
                     currentRoomId={this.state.currentRoomId}
                 />
-                <MessageList currentRoomId={this.state.currentRoomId} messages={this.state.messages} />
+                <MessageList
+                    currentRoomId={this.state.currentRoomId}
+                    currentUsername={this.state.current}
+                    messages={this.state.messages}
+                />
                 <NewRoomForm onSubmit={this.createRoom.bind(this)} />
                 <SendMessageForm sendMessage={this.sendMessage} disabled={!this.state.currentRoomId} />
             </div>
