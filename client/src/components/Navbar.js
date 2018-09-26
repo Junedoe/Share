@@ -31,6 +31,12 @@ class Navbar extends Component {
                             this.state.isOpen ? 'open-side-menu side-nav' : 'closed-side-menu side-nav'
                         }
                     >
+                        <div className="side-nav-search">
+                            <Searchbar
+                                filteredText={this.props.filteredText}
+                                handleChange={this.props.handleChange}
+                            />
+                        </div>
                         <a href="#" className="btn-close" onClick={e => this.handleClick(e)}>
                             &times;
                         </a>

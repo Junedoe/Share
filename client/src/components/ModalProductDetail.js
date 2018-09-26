@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
+
 const customStyles = {
     content: {
+        width: '40%',
+        height: '90%',
         top: '50%',
         left: '50%',
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+        // overflow: 'scroll',
+        alignContent: 'center'
     }
 };
 
@@ -25,7 +30,7 @@ class ModalProductDetail extends Component {
     };
 
     afterOpenModal = () => {
-        this.subtitle.style.color = '#f00';
+        this.subtitle.style.color = '$grey800';
     };
 
     closeModal = () => {
@@ -39,7 +44,9 @@ class ModalProductDetail extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.openModal}>Open Modal</button>
+                <button className="modal-btn" onClick={this.openModal}>
+                    Open Modal
+                </button>
                 <Modal
                     parentSelector={this.state.getParent}
                     isOpen={this.state.modalIsOpen}
@@ -48,17 +55,21 @@ class ModalProductDetail extends Component {
                     style={customStyles}
                     contentLabel="Modal"
                 >
-                    <h2 ref={subtitle => (this.subtitle = subtitle)}>Hello</h2>
-                    <div>{this.props.product.name}</div>
-                    <div>{this.props.product.subtitle}</div>
-                    <div>{this.props.product.description}</div>
-                    {/* <div>
-                        <a href={`/user/${this.props.product._owner && this.props.product._owner._id}`}>
-                            View {this.props.product._owner}
-                            's profile
-                        </a>
-                    </div> */}
-                    <button onClick={this.closeModal}>close</button>
+                    <Card>
+                        <CardImg top width="100%" src={this.props.product.image} alt="Card image cap" />
+                        <CardBody>
+                            <h2 ref={subtitle => (this.subtitle = subtitle)}>
+                                {this.props.product.name}
+                            </h2>
+                            <CardSubtitle>{this.props.product.subtitle}</CardSubtitle>
+                        </CardBody>
+                        <CardBody>
+                            <div>{this.props.product.description}</div>
+                            <button className="modal-btn" onClick={this.closeModal}>
+                                close
+                            </button>
+                        </CardBody>
+                    </Card>
                 </Modal>
             </div>
         );

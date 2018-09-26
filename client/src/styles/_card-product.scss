@@ -1,6 +1,9 @@
 .card-product-container {
+    border: 1px solid $popmint;
     -webkit-flex-flow: row wrap;
-    margin: auto;
+    margin-left: 6%;
+    margin-right: 6%;
+    margin-top: 5%;
     flex-wrap: wrap;
     flex-flow: row wrap;
     display: flex;

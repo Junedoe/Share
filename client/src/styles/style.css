@@ -53,6 +53,7 @@
 .nav-links-row {
   align-content: center;
   margin-top: 1%;
+  margin-left: 4%;
   width: 50vw; }
 
 #side-nav {
@@ -76,8 +77,7 @@
   transition: 0.3s; }
 
 #side-nav a:hover {
-  color: #575656;
-  color: #1effe1; }
+  color: #575656; }
 
 #side-nav .btn-close {
   position: absolute;
@@ -85,6 +85,12 @@
   right: 22px;
   font-size: 36px;
   margin-left: 50px; }
+
+.side-nav-search {
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px; }
 
 @media (max-width: 768px) {
   .nav-links-row {
@@ -105,8 +111,11 @@
   width: 0; }
 
 .card-product-container {
+  border: 1px solid #37f3e4;
   -webkit-flex-flow: row wrap;
-  margin: auto;
+  margin-left: 6%;
+  margin-right: 6%;
+  margin-top: 5%;
   flex-wrap: wrap;
   flex-flow: row wrap;
   display: flex;
@@ -203,6 +212,7 @@
 
 .up-btn {
   border: #37f3e4 solid 2px;
+  border-radius: 4px;
   outline: 0;
   display: inline-block;
   padding: 8px;
@@ -229,6 +239,26 @@ a:hover {
     justify-content: center; }
   .grid {
     flex-direction: column; } }
+
+.modal-btn {
+  border: #37f3e4 solid 2px;
+  border-radius: 4px;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: #484848;
+  background-color: #f7f7f7;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  width: 80%;
+  align-content: center; }
+
+.modal-btn:hover,
+a:hover {
+  background-color: #37f3e4;
+  color: white; }
 
 p {
   line-height: 175%; }

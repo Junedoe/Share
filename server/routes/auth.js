@@ -16,10 +16,10 @@ const chatkit = new Chatkit.default({
 
 router.post('/signup', (req, res, next) => {
     const { username, password, email, street, city, district } = req.body;
-    // if (!username || !password || !email || !street || !city || !district) {
-    //     res.status(401).json({ message: 'All fields must be filled out' });
-    //     return;
-    // }
+    if (!username || !password || !email || !street || !city || !district) {
+        res.status(401).json({ message: 'All fields must be filled out' });
+        return;
+    }
     User.findOne({ username })
         .then(user => {
             if (user !== null) {

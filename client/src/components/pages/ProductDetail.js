@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../api';
-import CardProductDetail from '../CardProductDetail';
+// import CardProductDetail from '../CardProductDetail';
 
 class ProductDetail extends Component {
     constructor(props) {
@@ -23,7 +23,7 @@ class ProductDetail extends Component {
         return (
             <div className="Products" id="headings">
                 <h2>Product Detail Page</h2>
-                <CardProductDetail product={this.state.product} />
+                {/* <CardProductDetail product={this.state.product} /> */}
                 <button>Contact</button>
             </div>
         );

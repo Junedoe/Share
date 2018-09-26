@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../api';
-import CardProductDetail from '../CardProduct';
+import CardProduct from '../CardProduct';
 
 class UserProfile extends Component {
     constructor(props) {
@@ -77,7 +77,7 @@ class UserProfile extends Component {
 
                 <div className="card-product-container">
                     {this.state.products.map((c, i) => (
-                        <CardProductDetail key={i} product={c} />
+                        <CardProduct key={i} product={c} />
                     ))}
                 </div>
             </div>
