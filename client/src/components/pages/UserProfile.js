@@ -56,6 +56,12 @@ class UserProfile extends Component {
         });
     }
 
+    /* form to upload picture
+    <form onSubmit={e => this.handleSubmit(e)}>
+    <input type="file" name="image" onChange={e => this.handleChange(e)} />
+    </form>
+    */
+
     render() {
         return (
             <div id="headings">
@@ -63,9 +69,6 @@ class UserProfile extends Component {
                     <div className="box box1">
                         <div>
                             <img id="profile-pic" src="/images/profile-pic.jpg" alt="Jane" />
-                            <form onSubmit={e => this.handleSubmit(e)}>
-                                <input type="file" name="image" onChange={e => this.handleChange(e)} />
-                            </form>
                         </div>
                     </div>
                     <div className="box box2">

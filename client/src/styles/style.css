@@ -317,8 +317,9 @@ b {
   margin-right: 30%; }
 
 .chat-app {
+  margin: 10%;
   display: grid;
-  height: 100%;
+  border: 5px solid cadetblue;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 60px;
   grid-template-areas: 'r m m m m m' 'r m m m m m' 'r m m m m m' 'r m m m m m' 'r m m m m m' 'n s s s s s'; }
@@ -330,7 +331,10 @@ b {
   grid-area: r; }
 
 .message-list {
-  grid-area: m; }
+  height: 50%;
+  grid-area: m;
+  border: 3px red solid;
+  overflow: scroll; }
 
 .send-message-form {
   grid-area: s; }
@@ -339,7 +343,7 @@ b {
 .rooms-list {
   box-sizing: border-box;
   padding: 10px;
-  background-color: var(--main-color);
+  background-color: #fffcfc;
   overflow: scroll;
   height: 100%; }
 

@@ -19,15 +19,17 @@ class MessageList extends React.Component {
         if (!this.props.currentRoomId) {
             return (
                 <div className="message-list">
-                    <div className="join-room">&larr; Join a room!</div>
+                    <div className="join-room">&larr; Click on a conversation</div>
                 </div>
             );
         }
         return (
             <div className="message-list">
                 {this.props.messages.map((message, index) => {
-                    console.log('message', message);
-                    window.message = message;
+                    {
+                        /* console.log('message', message);
+                    window.message = message; */
+                    }
 
                     return <Message key={index} user={message.sender.name} text={message.text} />;
                 })}

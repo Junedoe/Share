@@ -1,6 +1,9 @@
 .chat-app {
+    margin: 10%;
+    // overflow: scroll;
     display: grid;
-    height: 100%;
+    border: 5px solid cadetblue;
+    // height: 100%;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 60px;
     grid-template-areas:
@@ -21,7 +24,10 @@
 }
 
 .message-list {
+    height: 50%;
     grid-area: m;
+    border: 3px red solid;
+    overflow: scroll;
 }
 
 .send-message-form {
@@ -32,7 +38,7 @@
 .rooms-list {
     box-sizing: border-box;
     padding: 10px;
-    background-color: var(--main-color);
+    background-color: $grey100;
     overflow: scroll;
     height: 100%;
 }

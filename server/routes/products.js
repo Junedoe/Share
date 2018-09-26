@@ -13,7 +13,12 @@ const config = require('../configs/cloudinary'); //???
 const storage = cloudinaryStorage({
     cloudinary,
     folder: 'my-images',
-    allowedFormats: ['jpg', 'png', 'gif']
+    allowedFormats: ['jpg', 'png', 'gif'],
+    transformation: [
+        {
+            angle: 0
+        }
+    ]
 });
 
 const parser = multer({ storage });
