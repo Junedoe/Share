@@ -1,5 +1,5 @@
 const express = require('express');
-const { isLoggedIn } = require('../middlewares');
+const { isLoggedIn, imTheUser } = require('../middlewares');
 const Product = require('../models/Product');
 const User = require('../models/User');
 
@@ -13,7 +13,7 @@ router.get('/user-profile', isLoggedIn, (req, res, next) => {
         .catch(error => next(error));
 });
 
-router.get('/user/:id', isLoggedIn, (req, res, next) => {
+router.get('/user/:id', imTheUser, (req, res, next) => {
     Product.find({ _owner: req.params.id })
         .populate('_owner')
         .then(userProducts => {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Route, Switch, NavLink, Link } from 'react-router-dom';
 import api from '../../api';
 import CardProductDetail from '../CardProduct';
 
@@ -9,60 +8,43 @@ class UserProfile extends Component {
         this.state = {
             products: [],
             image: '',
-            file: null,
-            username: ''
+            // file: null,
+            username: '',
+            isCurrentUser: false
         };
     }
-    componentDidMount(props) {
-        api.getProducts()
-            .then(products => {
-                this.setState({
-                    products: products.filter(product => product._owner)
-                });
-            })
-            .catch(err => console.log(err));
-        api.getCurrentUser()
-            .then(data => {
-                this.setState({
-                    username: data.username
-                });
-            })
-            .catch(err => console.log(err));
+    componentDidMount() {
+        if (this.props.match) {
+            api.getProductsOfUser(this.props.match.params.id)
+                .then(products => {
+                    console.log('PRODUCTS FOR USER -->', products);
+                    this.setState({
+                        products: products,
+                        username: products[0]._owner.username
+                    });
+                })
+                .catch(err => console.log(err));
+        } else {
+            api.getCurrentUser()
+                .then(data => {
+                    this.setState({
+                        username: data.username,
+                        isCurrentUser: true
+                    });
+                    api.getProductsOfUser(data._id)
+                        .then(products => {
+                            this.setState({
+                                products: products.filter(product => product._owner)
+                            });
+                        })
+                        .catch(err => console.log(err));
+                })
+                .catch(err => console.log(err));
+        }
     }
-    handleInputChange(stateFieldName, event) {
-        let newState = {};
-        newState[stateFieldName] = event.target.value;
-        this.setState(newState);
-    }
-    handleSubmit(e) {
-        e.preventDefault();
-        api.addPicture(this.state.file)
-            .then(url => {
-                console.log('at url', url);
-                this.setState({ image: url.pictureUrl });
-                let data = {
-                    image: this.state.image,
-                    file: this.state.file
-                };
-            })
-            .catch(err => {
-                console.log('ERROR');
-            });
-    }
-
-    handleChange(e) {
-        this.setState({
-            file: e.target.files[0]
-        });
-    }
-
-    /* form to upload picture
-    <form onSubmit={e => this.handleSubmit(e)}>
-    <input type="file" name="image" onChange={e => this.handleChange(e)} />
-    </form>
-    */
 
     render() {
+        console.log('current user', this.state.isCurrentUser);
         return (
             <div id="headings">
                 <div className="grid">
@@ -74,11 +56,19 @@ class UserProfile extends Component {
                     <div className="box box2">
                         <div className="flx-start">
                             <div className="up-card">
-                                <h1>Welcome {this.state.username}</h1>
+                                {this.state.isCurrentUser && <h1>Welcome {this.state.username}</h1>}
+                                {!this.state.isCurrentUser && (
+                                    <h1>This is the profile of {this.state.username}</h1>
+                                )}
                                 <p className="up-title">Sharing is caring</p>
                                 <p />
                                 <p>
-                                    <button className="up-btn">Contact</button>
+                                    {!this.state.isCurrentUser && (
+                                        <button className="up-btn">Contact</button>
+                                    )}
+                                    {this.state.isCurrentUser && (
+                                        <button className="up-btn">Edit Profile</button>
+                                    )}
                                 </p>
                             </div>
                         </div>

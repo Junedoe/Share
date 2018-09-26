@@ -4,7 +4,6 @@ import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import AddProduct from './pages/AddProduct';
 import UserProfile from './pages/UserProfile';
-import UserProfile2 from './pages/UserProfile2';
 import ChatApp from './pages/Chat';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -39,11 +38,15 @@ class App extends Component {
                     <Route path="/login" component={Login} />
                     <Route
                         path="/user-profile"
+                        key="my-profile"
                         render={props => <UserProfile filteredText={this.state.filteredText} />}
                     />
                     <Route
                         path="/user/:id"
-                        render={props => <UserProfile2 filteredText={this.state.filteredText} />}
+                        key="other-profile"
+                        render={props => (
+                            <UserProfile {...props} filteredText={this.state.filteredText} />
+                        )}
                     />
 
                     <Route path="/chat" component={ChatApp} />

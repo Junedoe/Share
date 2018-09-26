@@ -49,10 +49,15 @@ class ModalProductDetail extends Component {
                     contentLabel="Modal"
                 >
                     <h2 ref={subtitle => (this.subtitle = subtitle)}>Hello</h2>
-                    <div>Product Detail</div>
-                    <div>Title</div>
-                    <div>Description</div>
-                    <div>Link to owner</div>
+                    <div>{this.props.product.name}</div>
+                    <div>{this.props.product.subtitle}</div>
+                    <div>{this.props.product.description}</div>
+                    {/* <div>
+                        <a href={`/user/${this.props.product._owner && this.props.product._owner._id}`}>
+                            View {this.props.product._owner}
+                            's profile
+                        </a>
+                    </div> */}
                     <button onClick={this.closeModal}>close</button>
                 </Modal>
             </div>
