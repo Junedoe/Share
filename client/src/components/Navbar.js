@@ -10,7 +10,6 @@ class Navbar extends Component {
             isOpen: false
         };
     }
-
     handleLogoutClick = e => {
         api.logout();
     };
@@ -36,13 +35,13 @@ class Navbar extends Component {
                             &times;
                         </a>
                         <a href="/">Home</a>
-                        {!api.isLoggedIn() && <a href="/user-profile">My Profile</a>}
+                        {api.isLoggedIn() && <a href="/user-profile">My Profile</a>}
                         {api.isLoggedIn() && <a href="/add-new-product">Add Product</a>}
                         {api.isLoggedIn() && <a href="/chat">Chat</a>}
                         {!api.isLoggedIn() && <Link to="/signup"> Signup</Link>}
                         {!api.isLoggedIn() && <a href="/login">Login</a>}
                         {api.isLoggedIn() && (
-                            <a href="/" onClick={e => this.handleLogoutClick(e)}>
+                            <a href="/logout" onClick={e => this.handleLogoutClick(e)}>
                                 Logout
                             </a>
                         )}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../api';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
     constructor(props) {
@@ -48,6 +49,10 @@ class Login extends Component {
                     />{' '}
                     <br />
                     <button onClick={e => this.handleClick(e)}>Login</button>
+                    <p>
+                        or go to
+                        {!api.isLoggedIn() && <Link to="/signup">Signup</Link>}
+                    </p>
                 </form>
             </div>
         );
