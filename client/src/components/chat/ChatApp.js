@@ -3,7 +3,7 @@ import Chatkit from '@pusher/chatkit';
 import MessageList from './messageList';
 import SendMessageForm from './sendMessageForm';
 import RoomList from './roomList';
-import NewRoomForm from './newRoomForm';
+// import NewRoomForm from './newRoomForm';
 import api from '../../api';
 
 import { tokenUrl, instanceLocator } from './config';
@@ -43,12 +43,14 @@ class ChatApp extends React.Component {
                 return chatManager;
             })
             .then(chatManager => {
-                console.log('CHATMANAGER', chatManager);
+                // console.log('CHATMANAGER', chatManager);
                 chatManager.connect().then(currentUser => {
-                    console.log('CURRENT USER', currentUser.name);
+                    // console.log('CURRENT USER.NAME', currentUser.name);
+                    // console.log('CURRENT USER', currentUser);
                     return currentUser.getJoinableRooms().then(joinableRooms => {
                         this.setState({
                             currentUser: currentUser,
+                            currentUserName: currentUser.name,
                             joinableRooms,
                             joinedRooms: currentUser.rooms
                         });
@@ -66,6 +68,7 @@ class ChatApp extends React.Component {
             roomId: this.state.currentRoomId,
             senderId: this.state.currentUser.name
         });
+        console.log('this.state.currentUser.name-------->: ', this.state.currentUser.name);
     }
 
     createRoom(name) {
@@ -81,7 +84,7 @@ class ChatApp extends React.Component {
         this.setState({
             messages: []
         });
-        console.log('SUBSCRIBE', this.state.currentUser);
+        console.log('SUBSCRIBE', this.state.currentUser.name);
         this.state.currentUser
             .subscribeToRoom({
                 roomId: roomId,
@@ -118,7 +121,7 @@ class ChatApp extends React.Component {
                     currentUsername={this.state.current}
                     messages={this.state.messages}
                 />
-                <NewRoomForm onSubmit={this.createRoom.bind(this)} />
+                {/* <NewRoomForm onSubmit={this.createRoom.bind(this)} /> */}
                 <SendMessageForm sendMessage={this.sendMessage} disabled={!this.state.currentRoomId} />
             </div>
         );
