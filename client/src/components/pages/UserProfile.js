@@ -79,7 +79,7 @@ class UserProfile extends Component {
 
                 <div className="card-product-container">
                     {this.state.products.map((c, i) => (
-                        <CardProduct key={i} product={c} />
+                        <CardProduct key={i} product={c} isCurrentUser={this.state.isCurrentUser} />
                     ))}
                 </div>
             </div>

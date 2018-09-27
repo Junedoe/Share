@@ -44,9 +44,16 @@ class ModalProductDetail extends Component {
     render() {
         return (
             <div>
-                <button className="modal-btn" onClick={this.openModal}>
-                    Open Modal
-                </button>
+                {!this.props.isCurrentUser && (
+                    <button className="modal-btn" onClick={this.openModal}>
+                        Open Modal
+                    </button>
+                )}
+                {this.props.isCurrentUser && (
+                    <button className="modal-btn">
+                        <a href="/edit-product">Edit</a>
+                    </button>
+                )}
                 <Modal
                     parentSelector={this.state.getParent}
                     isOpen={this.state.modalIsOpen}

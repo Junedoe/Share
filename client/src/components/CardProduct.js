@@ -14,11 +14,16 @@ const CardProduct = props => {
                 <CardBody>
                     {/* <CardLink href={`/product-detail/${props.product._id}`}>View details</CardLink> */}
                     <CardLink>
-                        <ModalProductDetail product={props.product} />
+                        <ModalProductDetail
+                            product={props.product}
+                            isCurrentUser={props.isCurrentUser}
+                        />
                     </CardLink>
-                    <CardLink href={`/user/${props.product._owner && props.product._owner._id}`}>
-                        from "(user)"
-                    </CardLink>
+                    {!props.isCurrentUser && (
+                        <CardLink href={`/user/${props.product._owner && props.product._owner._id}`}>
+                            from "(user)"
+                        </CardLink>
+                    )}
                 </CardBody>
             </Card>
         </div>
