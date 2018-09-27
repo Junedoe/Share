@@ -12,7 +12,7 @@ const Searchbar = props => {
                     value={props.filteredText}
                     onChange={props.handleChange}
                 />
-                <button id="btn-search" className="btn btn-outline-popmint my-2 my-sm-0" type="submit">
+                <button className="btn btn-outline-popmint my-2 my-sm-0 btn-search" type="submit">
                     Search
                 </button>
             </form>

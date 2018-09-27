@@ -7,20 +7,19 @@ class UserProfile extends Component {
         super(props);
         this.state = {
             products: [],
-            image: '',
-            // file: null,
-            username: '',
+            // image: '',
+            firstname: '',
             isCurrentUser: false
         };
     }
+
     componentDidMount() {
         if (this.props.match) {
             api.getProductsOfUser(this.props.match.params.id)
                 .then(products => {
-                    console.log('PRODUCTS FOR USER -->', products);
                     this.setState({
                         products: products,
-                        username: products[0]._owner.username
+                        firstname: products[0]._owner.firstname
                     });
                 })
                 .catch(err => console.log(err));
@@ -28,7 +27,8 @@ class UserProfile extends Component {
             api.getCurrentUser()
                 .then(data => {
                     this.setState({
-                        username: data.username,
+                        firstname: data.firstname,
+                        pictureUrl: data.pictureUrl,
                         isCurrentUser: true
                     });
                     api.getProductsOfUser(data._id)
@@ -50,15 +50,15 @@ class UserProfile extends Component {
                 <div className="grid">
                     <div className="box box1">
                         <div>
-                            <img id="profile-pic" src="/images/profile-pic.jpg" alt="Jane" />
+                            <img id="profile-pic" src={this.state.pictureUrl} alt="Jane" />
                         </div>
                     </div>
                     <div className="box box2">
                         <div className="flx-start">
                             <div className="up-card">
-                                {this.state.isCurrentUser && <h1>Welcome {this.state.username}</h1>}
+                                {this.state.isCurrentUser && <h1>Welcome {this.state.firstname}</h1>}
                                 {!this.state.isCurrentUser && (
-                                    <h1>This is the profile of {this.state.username}</h1>
+                                    <h1>This is the profile of {this.state.firstname}</h1>
                                 )}
                                 <p className="up-title">Sharing is caring</p>
                                 <p />
@@ -67,7 +67,9 @@ class UserProfile extends Component {
                                         <button className="up-btn">Contact</button>
                                     )}
                                     {this.state.isCurrentUser && (
-                                        <button className="up-btn">Edit Profile</button>
+                                        <a href="/edit">
+                                            <button className="up-btn">Edit Profile</button>
+                                        </a>
                                     )}
                                 </p>
                             </div>

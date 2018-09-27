@@ -37,7 +37,7 @@ class Navbar extends Component {
                                 handleChange={this.props.handleChange}
                             />
                         </div>
-                        <a href="#" className="btn-close" onClick={e => this.handleClick(e)}>
+                        <a href={null} className="btn-close" onClick={e => this.handleClick(e)}>
                             &times;
                         </a>
                         <a href="/">Home</a>
@@ -53,7 +53,7 @@ class Navbar extends Component {
                         )}
                     </div>
                     <span className="open-slide">
-                        <a href="#" onClick={this.handleClick}>
+                        <a href={null} onClick={this.handleClick}>
                             <svg width="30" height="30">
                                 <path d="M0,5 30,5" stroke="#fff" strokeWidth="5" />
                                 <path d="M0,14 30,14" stroke="#fff" strokeWidth="5" />

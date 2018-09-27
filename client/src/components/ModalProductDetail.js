@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
+import { Card, CardImg, CardBody, CardSubtitle } from 'reactstrap';
 
 const customStyles = {
     content: {

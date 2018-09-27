@@ -11,7 +11,7 @@ class RoomList extends React.Component {
                         const active = this.props.currentRoomId === room.id ? 'active' : '';
                         return (
                             <li key={i} className={'room ' + active}>
-                                <a href="#" onClick={() => this.props.subscribeToRoom(room.id)}>
+                                <a href={null} onClick={() => this.props.subscribeToRoom(room.id)}>
                                     {room.name}
                                 </a>
                             </li>

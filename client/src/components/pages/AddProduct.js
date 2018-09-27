@@ -9,8 +9,8 @@ class AddProduct extends Component {
             subtitle: '',
             description: '',
             image: '',
-            message: null,
-            file: null
+            message: '',
+            file: ''
         };
     }
 
@@ -46,7 +46,7 @@ class AddProduct extends Component {
                     });
                     setTimeout(() => {
                         this.setState({
-                            message: null
+                            message: ''
                         });
                     }, 2000);
                 });

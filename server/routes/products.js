@@ -59,6 +59,7 @@ router.post('/', isLoggedIn, (req, res, next) => {
         })
         .catch(err => next(err));
 });
+
 // Route to edit the product
 router.get('/:id', isLoggedIn, (req, res, next) => {
     Product.findById(req.params.id)

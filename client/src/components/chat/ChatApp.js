@@ -12,7 +12,7 @@ class ChatApp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentRoomId: null,
+            currentRoomId: '',
             joinableRooms: [],
             joinedRooms: [],
             messages: [],

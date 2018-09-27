@@ -8,10 +8,13 @@ class Signup extends Component {
         this.state = {
             username: '',
             password: '',
-            name: '',
+            firstname: '',
+            surname: '',
             email: '',
             street: '',
+            number: '',
             district: '',
+            postalcode: '',
             city: '',
             initial: false
         };
@@ -29,10 +32,13 @@ class Signup extends Component {
         let data = {
             username: this.state.username,
             password: this.state.password,
-            name: this.state.name,
+            firstname: this.state.firstname,
+            surname: this.state.surname,
             email: this.state.email,
             street: this.state.street,
+            number: this.state.number,
             district: this.state.district,
+            postalcode: this.state.postalcode,
             city: this.state.city
         };
         api.signup(data)
@@ -53,7 +59,12 @@ class Signup extends Component {
     render() {
         return (
             <div className="Signup" id="form-container">
-                <h2>Signup</h2>
+                {!this.state.initial && (
+                    <h2>
+                        Choose a username <br /> and password
+                    </h2>
+                )}
+                {this.state.initial && <h2>Type in your details</h2>}
                 <form>
                     {!this.state.initial && (
                         <div>
@@ -76,11 +87,18 @@ class Signup extends Component {
                     )}
                     {this.state.initial && (
                         <div>
-                            Full Name:{' '}
+                            First Name:{' '}
                             <input
                                 type="text"
-                                value={this.state.name}
-                                onChange={e => this.handleInputChange('name', e)}
+                                value={this.state.firstname}
+                                onChange={e => this.handleInputChange('firstname', e)}
+                            />{' '}
+                            <br />
+                            Surname:{' '}
+                            <input
+                                type="text"
+                                value={this.state.surname}
+                                onChange={e => this.handleInputChange('surname', e)}
                             />{' '}
                             <br />
                             Email:{' '}
@@ -90,18 +108,34 @@ class Signup extends Component {
                                 onChange={e => this.handleInputChange('email', e)}
                             />{' '}
                             <br />
-                            Street:{' '}
-                            <input
-                                type="text"
-                                value={this.state.street}
-                                onChange={e => this.handleInputChange('street', e)}
-                            />{' '}
+                            <div className="street-number" style={{ display: 'inline' }}>
+                                Street:{' '}
+                                <input
+                                    type="text"
+                                    value={this.state.street}
+                                    onChange={e => this.handleInputChange('street', e)}
+                                />{' '}
+                                <br />
+                                Number:{' '}
+                                <input
+                                    type="text"
+                                    value={this.state.number}
+                                    onChange={e => this.handleInputChange('number', e)}
+                                />{' '}
+                            </div>
                             <br />
                             District:{' '}
                             <input
                                 type="text"
                                 value={this.state.district}
                                 onChange={e => this.handleInputChange('district', e)}
+                            />{' '}
+                            <br />
+                            Postal Code:{' '}
+                            <input
+                                type="text"
+                                value={this.state.postalcode}
+                                onChange={e => this.handleInputChange('postalcode', e)}
                             />{' '}
                             <br />
                             City:{' '}

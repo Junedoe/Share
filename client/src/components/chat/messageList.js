@@ -26,11 +26,6 @@ class MessageList extends React.Component {
         return (
             <div className="message-list">
                 {this.props.messages.map((message, index) => {
-                    {
-                        /* console.log('message', message);
-                    window.message = message; */
-                    }
-
                     return <Message key={index} user={message.sender.name} text={message.text} />;
                 })}
             </div>
