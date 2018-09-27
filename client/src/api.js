@@ -125,5 +125,21 @@ export default {
             })
             .then(res => res.data)
             .catch(errHandler);
+    },
+    updateProductInformation(data) {
+        let formData = new FormData();
+        formData.append('picture', data.file);
+        formData.append('name', data.name);
+        formData.append('subtitle', data.subtitle);
+        formData.append('description', data.description);
+        formData.append('_owner', data._owner);
+        return service
+            .patch('/product/:id', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            .then(res => res.data)
+            .catch(errHandler);
     }
 };

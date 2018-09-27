@@ -6,7 +6,8 @@ class Products extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: []
+            products: [],
+            isCurrentUser: false
         };
     }
     componentDidMount() {

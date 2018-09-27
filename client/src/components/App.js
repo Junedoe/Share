@@ -5,10 +5,12 @@ import ProductDetail from './pages/ProductDetail';
 import AddProduct from './pages/AddProduct';
 import UserProfile from './pages/UserProfile';
 import EditProfile from './pages/EditProfile';
+import EditProduct from './pages/EditProduct';
 import ChatApp from './pages/Chat';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './Navbar';
+import ChatNew from './pages/chatNew';
 
 class App extends Component {
     constructor(props) {
@@ -51,7 +53,9 @@ class App extends Component {
                     />
 
                     <Route path="/chat" component={ChatApp} />
-                    <Route path="/edit" component={EditProfile} />
+                    <Route path="/edit-profile" component={EditProfile} />
+                    <Route path="/edit-product" component={EditProduct} />
+                    <Route path="/chatnew/:id" component={ChatNew} />
 
                     <Route render={() => <h2>404</h2>} />
                 </Switch>

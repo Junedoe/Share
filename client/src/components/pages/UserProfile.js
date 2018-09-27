@@ -7,7 +7,6 @@ class UserProfile extends Component {
         super(props);
         this.state = {
             products: [],
-            // image: '',
             firstname: '',
             isCurrentUser: false
         };
@@ -67,7 +66,7 @@ class UserProfile extends Component {
                                         <button className="up-btn">Contact</button>
                                     )}
                                     {this.state.isCurrentUser && (
-                                        <a href="/edit">
+                                        <a href="/edit-profile">
                                             <button className="up-btn">Edit Profile</button>
                                         </a>
                                     )}
