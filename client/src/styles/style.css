@@ -509,10 +509,36 @@ b {
 .column2 {
   flex: 60%; }
 
+#form-container-chat {
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 4% auto;
+  width: 60vw;
+  height: 40vw;
+  border: #37f3e4 3px solid;
+  padding: 3%;
+  border-radius: 4px; }
+  #form-container-chat .send-message-form form {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1%; }
+    #form-container-chat .send-message-form form input {
+      padding: 15px;
+      margin-bottom: 10px;
+      width: 100%;
+      text-align: center;
+      box-shadow: none;
+      color: #484848;
+      display: inline-block;
+      border: 2px solid #f39fff;
+      border-radius: 3%;
+      align-content: center; }
+
 .chat-app {
   margin: 10%;
+  overflow: scroll;
   display: grid;
-  border: 5px solid cadetblue;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 60px;
   grid-template-areas: 'r m m m m m' 'r m m m m m' 'r m m m m m' 'r m m m m m' 'r m m m m m' 'n s s s s s'; }
@@ -526,7 +552,6 @@ b {
 .message-list {
   height: 50%;
   grid-area: m;
-  border: 3px red solid;
   overflow: scroll; }
 
 .send-message-form {
@@ -545,21 +570,6 @@ b {
   padding: 0;
   overflow: scoll; }
 
-.rooms-list li {
-  margin: 10px 0; }
-
-.rooms-list h3 {
-  margin: 5px 0;
-  color: var(--secondary-color); }
-
-.rooms-list .room a {
-  color: var(--secondary-text-color);
-  font-weight: 600;
-  text-decoration: none; }
-
-.rooms-list .room.active a {
-  color: var(--secondary-color); }
-
 .new-room-form {
   padding: 0 5px;
   background: var(--secondary-color);
@@ -574,24 +584,6 @@ b {
 .new-room-form input {
   width: 135px;
   background: var(--secondary-color); }
-
-.new-room-form button {
-  background: var(--secondary-color);
-  color: var(--main-text-color);
-  border: 0; }
-
-.new-room-form input::placeholder {
-  color: var(--main-text-color);
-  font-weight: 200; }
-
-.new-room-form input:focus {
-  outline-width: 0; }
-
-.new-room-form input {
-  border: 0; }
-
-.new-room-form button {
-  border: 0; }
 
 .message {
   margin: 15px 0; }
@@ -622,7 +614,7 @@ b {
   justify-content: center;
   align-items: center;
   height: 100%;
-  font-size: 34px;
+  font-size: 30px;
   font-weight: 300; }
 
 .send-message-form {
