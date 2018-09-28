@@ -31,7 +31,12 @@ export default {
             .then(res => res.data)
             .catch(errHandler);
     },
-
+    deleteProduct(id) {
+        return service
+            .delete(`/products/${id}`)
+            .then(res => res.data)
+            .catch(errHandler);
+    },
     getUserProfile() {
         return service
             .get('/user-profile')
@@ -126,15 +131,15 @@ export default {
             .then(res => res.data)
             .catch(errHandler);
     },
-    updateProductInformation(data) {
+
+    updateProductInformation(data, id) {
         let formData = new FormData();
         formData.append('picture', data.file);
         formData.append('name', data.name);
         formData.append('subtitle', data.subtitle);
         formData.append('description', data.description);
-        formData.append('_owner', data._owner);
         return service
-            .patch('/product/:id', formData, {
+            .patch(`/products/${id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

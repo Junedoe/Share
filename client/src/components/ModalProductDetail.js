@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
-import { Card, CardImg, CardBody, CardSubtitle } from 'reactstrap';
+import { Link } from 'react-router-dom';
+
+import { Card, CardImg, CardBody, CardSubtitle, CardLink } from 'reactstrap';
 
 const customStyles = {
     content: {
@@ -46,12 +48,12 @@ class ModalProductDetail extends Component {
             <div>
                 {!this.props.isCurrentUser && (
                     <button className="modal-btn" onClick={this.openModal}>
-                        Open Modal
+                        View details
                     </button>
                 )}
                 {this.props.isCurrentUser && (
                     <button className="modal-btn">
-                        <a href="/edit-product">Edit</a>
+                        <Link to={`/edit-product/${this.props.product._id}`}>Edit</Link>
                     </button>
                 )}
                 <Modal
@@ -75,6 +77,14 @@ class ModalProductDetail extends Component {
                             <button className="modal-btn" onClick={this.closeModal}>
                                 close
                             </button>
+                            {!this.props.isCurrentUser &&
+                                this.props.product._owner && (
+                                    <CardLink href={`/user/${this.props.product._owner._id}`}>
+                                        <button className="modal-btn" id="modal-btn-user">
+                                            from {this.props.product._owner.username}
+                                        </button>
+                                    </CardLink>
+                                )}
                         </CardBody>
                     </Card>
                 </Modal>

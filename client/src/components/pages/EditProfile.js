@@ -46,10 +46,17 @@ class EditProfile extends Component {
 
     render() {
         return (
-            <div className="AddProduct" id="add-product">
+            <div className="AddProduct" id="form-container">
                 <h2>Edit your profile</h2>
                 <form onSubmit={e => this.handleSubmit(e)}>
-                    <input type="file" name="image" onChange={e => this.handleChange(e)} /> <br />
+                    <input
+                        type="file"
+                        name="file"
+                        id="file"
+                        class="inputfile"
+                        onChange={e => this.handleChange(e)}
+                    />
+                    <label for="file">Choose a file</label>
                     <br />
                     First Name:{' '}
                     <input

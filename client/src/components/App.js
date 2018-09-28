@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import AddProduct from './pages/AddProduct';
 import UserProfile from './pages/UserProfile';
 import EditProfile from './pages/EditProfile';
 import EditProduct from './pages/EditProduct';
-import ChatApp from './pages/Chat';
+import ChatApp from './chat/ChatApp';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './Navbar';
-import ChatNew from './pages/chatNew';
+import api from '../api';
 
 class App extends Component {
     constructor(props) {
@@ -52,13 +52,18 @@ class App extends Component {
                         )}
                     />
 
-                    <Route path="/chat" component={ChatApp} />
                     <Route path="/edit-profile" component={EditProfile} />
-                    <Route path="/edit-product" component={EditProduct} />
-                    <Route path="/chatnew/:id" component={ChatNew} />
-
+                    <Route path="/edit-product/:id" component={EditProduct} />
+                    <Route path="/chat" component={ChatApp} />
                     <Route render={() => <h2>404</h2>} />
                 </Switch>
+                {api.isLoggedIn() && (
+                    <div id="round-button">
+                        <Link className="round-button-circle" to="/add-new-product">
+                            <img src="/images/Btn-add.png" alt="" />
+                        </Link>
+                    </div>
+                )}
             </div>
         );
     }

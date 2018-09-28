@@ -12,6 +12,14 @@ class UserProfile extends Component {
         };
     }
 
+    handleDelete = (e, id) => {
+        console.log('delete', id);
+        e.preventDefault();
+        this.setState({
+            products: this.state.products.filter(el => el._id !== id)
+        });
+        api.deleteProduct(id);
+    };
     componentDidMount() {
         if (this.props.match) {
             api.getProductsOfUser(this.props.match.params.id)
@@ -62,9 +70,14 @@ class UserProfile extends Component {
                                 <p className="up-title">Sharing is caring</p>
                                 <p />
                                 <p>
-                                    {!this.state.isCurrentUser && (
-                                        <button className="up-btn">Contact</button>
-                                    )}
+                                    {/* {!this.state.isCurrentUser && (
+                                        <Link
+                                            className="up-btn"
+                                            href={`/newchat/${this.state.product._owner}`}
+                                        >
+                                            Go to Chat
+                                        </Link>
+                                    )} */}
                                     {this.state.isCurrentUser && (
                                         <a href="/edit-profile">
                                             <button className="up-btn">Edit Profile</button>
@@ -78,7 +91,13 @@ class UserProfile extends Component {
 
                 <div className="card-product-container">
                     {this.state.products.map((c, i) => (
-                        <CardProduct key={i} product={c} isCurrentUser={this.state.isCurrentUser} />
+                        <CardProduct
+                            key={i}
+                            product={c}
+                            handleDelete={(e, id) => this.handleDelete(e, id)}
+                            isCurrentUser={this.state.isCurrentUser}
+                            atProfile={true}
+                        />
                     ))}
                 </div>
             </div>

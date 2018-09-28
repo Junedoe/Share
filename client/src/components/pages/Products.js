@@ -13,13 +13,13 @@ class Products extends Component {
     componentDidMount() {
         api.getProducts()
             .then(products => {
-                console.log(products);
                 this.setState({
                     products: products
                 });
             })
             .catch(err => console.log(err));
     }
+
     render() {
         return (
             <div className="Products" id="headings">
@@ -34,7 +34,7 @@ class Products extends Component {
                         )
                         .map(
                             (c, i) => (
-                                <CardProduct key={i} product={c} />
+                                <CardProduct key={i} product={c} atProfile={false} />
                             ),
                             console.log(this.state.products)
                         )}

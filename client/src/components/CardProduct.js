@@ -19,15 +19,18 @@ const CardProduct = props => {
                             isCurrentUser={props.isCurrentUser}
                         />
                     </CardLink>
-                    <CardLink href={`/chatnew/${props.product._id}`}>Go to Chat</CardLink>
-                    {!props.isCurrentUser &&
-                        props.product._owner && (
-                            <button className="modal-btn" id="modal-btn-user">
-                                <CardLink href={`/user/${props.product._owner._id}`}>
-                                    from {props.product._owner.username}
-                                </CardLink>
-                            </button>
-                        )}
+
+                    {/* <CardLink href={`/chat`}>Go to Chat</CardLink> */}
+
+                    {props.atProfile && (
+                        <button
+                            className="modal-btn"
+                            id="modal-btn-user"
+                            onClick={e => props.handleDelete(e, props.product._id)}
+                        >
+                            Remove item
+                        </button>
+                    )}
                 </CardBody>
             </Card>
         </div>

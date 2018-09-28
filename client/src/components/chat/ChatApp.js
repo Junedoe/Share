@@ -3,7 +3,7 @@ import Chatkit from '@pusher/chatkit';
 import MessageList from './messageList';
 import SendMessageForm from './sendMessageForm';
 import RoomList from './roomList';
-// import NewRoomForm from './newRoomForm';
+import NewRoomForm from './newRoomForm';
 import api from '../../api';
 
 import { tokenUrl, instanceLocator } from './config';
@@ -121,7 +121,7 @@ class ChatApp extends React.Component {
                     currentUsername={this.state.current}
                     messages={this.state.messages}
                 />
-                {/* <NewRoomForm onSubmit={this.createRoom.bind(this)} /> */}
+                <NewRoomForm onSubmit={this.createRoom.bind(this)} />
                 <SendMessageForm sendMessage={this.sendMessage} disabled={!this.state.currentRoomId} />
             </div>
         );

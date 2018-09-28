@@ -13,6 +13,18 @@ class EditProduct extends Component {
             file: ''
         };
     }
+    componentDidMount() {
+        api.getProduct(this.props.match.params.id)
+            .then(product => {
+                this.setState({
+                    name: product.name,
+                    subtitle: product.subtitle,
+                    description: product.description,
+                    image: product.image
+                });
+            })
+            .catch(err => console.log(err));
+    }
 
     handleInputChange = (stateFieldName, event) => {
         let newState = {};
@@ -22,8 +34,13 @@ class EditProduct extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        let data = this.state;
-        api.updateProductInformation(data)
+        let data = {
+            file: this.state.file,
+            name: this.state.name,
+            subtitle: this.state.subtitle,
+            description: this.state.description
+        };
+        api.updateProductInformation(data, this.props.match.params.id)
             .then(product => {
                 console.log('product IN FE', product);
                 this.props.history.push('/user-profile'); // Redirect to the home page
@@ -34,7 +51,6 @@ class EditProduct extends Component {
     };
 
     handleChange = e => {
-        console.log('handleChange');
         console.log('DEBUG e.target.files[0]', e.target.files[0]);
         this.setState({
             file: e.target.files[0]
@@ -43,10 +59,17 @@ class EditProduct extends Component {
 
     render() {
         return (
-            <div className="AddProduct" id="add-product">
+            <div className="AddProduct" id="form-container">
                 <h2>Edit your Product</h2>
                 <form onSubmit={e => this.handleSubmit(e)}>
-                    <input type="file" name="image" onChange={e => this.handleChange(e)} /> <br />
+                    <input
+                        type="file"
+                        name="file"
+                        id="file"
+                        class="inputfile"
+                        onChange={e => this.handleChange(e)}
+                    />
+                    <label for="file">Choose a file</label>
                     <br />
                     Name:{' '}
                     <input

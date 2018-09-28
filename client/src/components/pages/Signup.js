@@ -59,12 +59,8 @@ class Signup extends Component {
     render() {
         return (
             <div className="Signup" id="form-container">
-                {!this.state.initial && (
-                    <h2>
-                        Choose a username <br /> and password
-                    </h2>
-                )}
-                {this.state.initial && <h2>Type in your details</h2>}
+                {!this.state.initial && <h2>Choose a username and password</h2>}
+                {this.state.initial && <h2>Write your personal details</h2>}
                 <form>
                     {!this.state.initial && (
                         <div>
@@ -145,18 +141,27 @@ class Signup extends Component {
                                 onChange={e => this.handleInputChange('city', e)}
                             />{' '}
                             <br />
-                            <p>
-                                or go to
-                                {!api.isLoggedIn() && <Link to="/login">Login</Link>}
-                            </p>
                         </div>
                     )}
                     {!this.state.initial && (
-                        <button type="button" onClick={this.handleNextClick}>
+                        <button className="sl-btn" type="button" onClick={this.handleNextClick}>
                             next
                         </button>
                     )}
-                    {this.state.initial && <button onClick={e => this.handleClick(e)}>Signup</button>}
+                    {this.state.initial && (
+                        <button className="sl-btn" onClick={e => this.handleClick(e)}>
+                            Signup
+                        </button>
+                    )}
+                    {!this.state.initial && (
+                        <p>
+                            or go to{' '}
+                            <Link className="sl-link" style={{ color: 'darkgrey' }} to="/login">
+                                {' '}
+                                Login
+                            </Link>
+                        </p>
+                    )}
                 </form>
             </div>
         );

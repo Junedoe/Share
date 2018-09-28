@@ -48,10 +48,15 @@ class Login extends Component {
                         onChange={e => this.handleInputChange('password', e)}
                     />{' '}
                     <br />
-                    <button onClick={e => this.handleClick(e)}>Login</button>
+                    <button className="sl-btn" onClick={e => this.handleClick(e)}>
+                        Login
+                    </button>
                     <p>
                         or go to
-                        {!api.isLoggedIn() && <Link to="/signup">Signup</Link>}
+                        <Link className="sl-link" to="/signup">
+                            {' '}
+                            Signup
+                        </Link>
                     </p>
                 </form>
             </div>

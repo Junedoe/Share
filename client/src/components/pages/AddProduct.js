@@ -67,10 +67,17 @@ class AddProduct extends Component {
 
     render() {
         return (
-            <div className="AddProduct" id="add-product">
+            <div className="AddProduct" id="form-container">
                 <h2>Add product</h2>
                 <form onSubmit={e => this.handleSubmit(e)}>
-                    <input type="file" name="image" onChange={e => this.handleChange(e)} /> <br />
+                    <input
+                        type="file"
+                        name="file"
+                        id="file"
+                        class="inputfile"
+                        onChange={e => this.handleChange(e)}
+                    />
+                    <label for="file">Choose a file</label>
                     <br />
                     Name:{' '}
                     <input
@@ -100,7 +107,7 @@ class AddProduct extends Component {
                         }}
                     />{' '}
                     <br />
-                    <button>Add Item</button>
+                    <button className="up-btn">Add Item</button>
                 </form>
                 <div
                     style={{

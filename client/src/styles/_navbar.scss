@@ -70,7 +70,6 @@
     z-index: 1;
     top: 0;
     left: 0;
-    // background-color: #37f3e4;
     background-color: rgb(255, 255, 255);
     opacity: 0.9;
     overflow-x: hidden;
@@ -82,6 +81,7 @@
     padding: 10px 10px 10px 30px;
     text-decoration: none;
     font-size: 18px;
+    font-weight: 400;
     color: rgb(87, 86, 86);
     display: block;
     transition: 0.3s;
@@ -89,7 +89,6 @@
 
 #side-nav a:hover {
     color: rgb(87, 86, 86);
-    // color: rgb(30, 255, 225);
 }
 
 #side-nav .btn-close {
@@ -100,11 +99,30 @@
     margin-left: 50px;
 }
 .side-nav-search {
+    margin: 0 4%;
     color: #f2f2f2;
-    text-align: center;
     text-decoration: none;
     font-size: 18px;
 }
+
+// Add product button:
+#round-button {
+    width: 80px;
+}
+.round-button-circle {
+    box-shadow: $grey100;
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 3vw;
+    right: 3vw;
+    z-index: 1;
+    overflow: hidden;
+}
+.round-button-circle:hover {
+    background-color: transparent;
+}
+
 @media (max-width: 768px) {
     .nav-links-row {
         display: none;
@@ -119,6 +137,9 @@
 @media (min-width: 769px) {
     .open-slide {
         display: none;
+    }
+    .round-button {
+        width: 60px;
     }
 }
 

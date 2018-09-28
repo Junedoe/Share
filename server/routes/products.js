@@ -142,20 +142,25 @@ router.post('/add-new-product', isLoggedIn, parser.single('picture'), (req, res,
 
 //edit product
 
-router.patch('/product/:id', isLoggedIn, parser.single('picture'), (req, res, next) => {
+router.patch('/:id', isLoggedIn, parser.single('picture'), (req, res, next) => {
     let { name, subtitle, description } = req.body;
+    console.log(req.file);
     Product.findById(req.params.id)
         .then(product => {
             let image = product.image;
             if (req.file) image = req.file.secure_url;
+            console.log('IMAGE---->: ', image);
             product
-                .update({
-                    name,
-                    subtitle,
-                    description,
-                    _owner: req.user._id,
-                    image
-                })
+                .update(
+                    {
+                        name,
+                        subtitle,
+                        description,
+                        _owner: req.user._id,
+                        image
+                    },
+                    { new: true }
+                )
                 .then(product => {
                     res.json({
                         success: true,

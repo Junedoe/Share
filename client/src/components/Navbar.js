@@ -70,11 +70,11 @@ class Navbar extends Component {
                                 {!api.isLoggedIn() && <Link to="/">Home</Link>}
                             </li>
                             <li className="navbar-navb-li">
-                                <Link to="/user-profile">My Profile</Link>
+                                {api.isLoggedIn() && <Link to="/user-profile">My Profile</Link>}
                             </li>
-                            <li className="navbar-navb-li">
-                                {api.isLoggedIn() && <Link to="/add-new-product">Add Product</Link>}
-                            </li>
+                            {/* <li className="navbar-navb-li">
+                                {api.isLoggedIn() && <Link to="/add-new-product">Add</Link>}
+                            </li> */}
                             <li className="navbar-navb-li">
                                 {api.isLoggedIn() && <Link to="/chat">Chat</Link>}
                             </li>
