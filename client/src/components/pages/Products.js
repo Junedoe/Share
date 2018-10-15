@@ -23,7 +23,7 @@ class Products extends Component {
     render() {
         return (
             <div className="Products" id="headings">
-                <h2>List of products</h2>
+                <h2>Welcome to Share.</h2>
                 <div className="card-product-container">
                     {this.state.products
                         .filter(el =>
