@@ -58,7 +58,7 @@ class Signup extends Component {
 
     render() {
         return (
-            <div className="Signup" id="form-container">
+            <div className="signup" id="form-container">
                 {!this.state.initial && <h2>Choose a username and password</h2>}
                 {this.state.initial && <h2>Write your personal details</h2>}
                 <form>

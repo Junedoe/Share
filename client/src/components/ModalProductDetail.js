@@ -31,18 +31,6 @@ const customStyleMobile = {
     }
 };
 
-const Example = () => (
-    <div>
-        <MediaQuery query="(min-device-width: 1224px)">
-            <div>You are a desktop or laptop</div>
-        </MediaQuery>
-
-        <MediaQuery query="(max-device-width: 769px)">
-            <div>You are a mobile phone</div>
-        </MediaQuery>
-    </div>
-);
-
 class ModalProductDetail extends Component {
     constructor(props) {
         super(props);

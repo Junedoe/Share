@@ -67,7 +67,7 @@ class AddProduct extends Component {
 
     render() {
         return (
-            <div className="AddProduct" id="form-container">
+            <div className="product-form" id="form-container">
                 <h2>Add product</h2>
                 <form onSubmit={e => this.handleSubmit(e)}>
                     <input

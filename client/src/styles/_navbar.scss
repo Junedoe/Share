@@ -102,24 +102,6 @@
     font-size: 18px;
 }
 
-// Add product button:
-#round-button {
-    width: 80px;
-}
-.round-button-circle {
-    box-shadow: $grey100;
-    width: 100px;
-    height: 100px;
-    position: fixed;
-    bottom: 3vw;
-    right: 3vw;
-    z-index: 1;
-    overflow: hidden;
-}
-.round-button-circle:hover {
-    background-color: transparent;
-}
-
 @media (max-width: 768px) {
     .nav-links-row {
         display: none;
