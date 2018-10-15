@@ -66,8 +66,6 @@ MONGODB_URI=mongodb://localhost/share
 
 To upload pictures of products you will need to to create an account on Cloudinary [here](https://cloudinary.com/users/register/free).
 
-## Copyright
-
 ```
 /*******************************************************
  * Copyright (C) 2018 Ojuna Faust
