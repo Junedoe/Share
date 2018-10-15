@@ -56,7 +56,7 @@ $ npm run dev:client
 
 You should have a `server/.env` file with the following values:
 
-````
+```
 PORT=5000
 CLOUDINARY_CLOUD_NAME= // -> Here your Cloudinary cloud name
 CLOUDINARY_API_KEY= // -> Here your API Key
@@ -66,9 +66,9 @@ MONGODB_URI=mongodb://localhost/share
 
 To upload pictures of products you will need to to create an account on Cloudinary [here](https://cloudinary.com/users/register/free).
 
-
 ## Copyright
 
+```
 /*******************************************************
  * Copyright (C) 2018 Ojuna Faust
  *
@@ -77,4 +77,4 @@ To upload pictures of products you will need to to create an account on Cloudina
  * Share can not be copied and/or distributed without the express
  * permission of the author Ojuna Faust.
  *******************************************************/
-````
+```
