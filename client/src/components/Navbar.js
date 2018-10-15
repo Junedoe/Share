@@ -65,26 +65,13 @@ class Navbar extends Component {
                         <Link to="/">Share.</Link>
                     </div>
                     <div className="nav-links-row">
-                        <ul className="navbar navbar-navb">
-                            <li className="navbar-navb-li">
-                                {!api.isLoggedIn() && <Link to="/">Home</Link>}
-                            </li>
-                            <li className="navbar-navb-li">
-                                {api.isLoggedIn() && <Link to="/user-profile">My Profile</Link>}
-                            </li>
-                            {/* <li className="navbar-navb-li">
-                                {api.isLoggedIn() && <Link to="/add-new-product">Add</Link>}
-                            </li> */}
-                            <li className="navbar-navb-li">
-                                {api.isLoggedIn() && <Link to="/chat">Chat</Link>}
-                            </li>
-                            <li className="navbar-navb-li">
-                                {!api.isLoggedIn() && <Link to="/signup">Signup</Link>}
-                            </li>
-                            <li className="navbar-navb-li">
-                                {!api.isLoggedIn() && <Link to="/login">Login</Link>}
-                            </li>
-                            <li className="navbar-navb-li">
+                        <ul className="navbar navbar-navb-li">
+                            <li>{!api.isLoggedIn() && <Link to="/">Home</Link>}</li>
+                            <li>{api.isLoggedIn() && <Link to="/user-profile">My Profile</Link>}</li>
+                            <li>{api.isLoggedIn() && <Link to="/chat">Chat</Link>}</li>
+                            <li>{!api.isLoggedIn() && <Link to="/signup">Signup</Link>}</li>
+                            <li>{!api.isLoggedIn() && <Link to="/login">Login</Link>}</li>
+                            <li>
                                 {api.isLoggedIn() && (
                                     <Link to="/" onClick={e => this.handleLogoutClick(e)}>
                                         Logout

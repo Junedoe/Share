@@ -110,11 +110,9 @@ class AddProduct extends Component {
                     <button className="up-btn">Add Item</button>
                 </form>
                 <div
+                    className="pa-btn"
                     style={{
-                        width: '20%',
-                        margin: 10,
-                        backgroundColor: '#37f3e4',
-                        display: this.state.message ? 'block' : 'none'
+                        display: this.state.message ? 'inline' : 'none'
                     }}
                 >
                     {this.state.message}

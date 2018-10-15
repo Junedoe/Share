@@ -16,7 +16,9 @@
     // flex-direction: column;
     background-color: rgba($color: #ffffff, $alpha: 0.5);
 }
-
+#description {
+    padding-bottom: 5%;
+}
 /* Medium screens */
 @media all and (max-width: 768px) {
     .one-card {
