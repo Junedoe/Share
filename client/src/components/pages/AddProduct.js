@@ -74,7 +74,7 @@ class AddProduct extends Component {
                         type="file"
                         name="file"
                         id="file"
-                        class="inputfile"
+                        className="inputfile"
                         onChange={e => this.handleChange(e)}
                     />
                     <label for="file">Choose a file</label>
